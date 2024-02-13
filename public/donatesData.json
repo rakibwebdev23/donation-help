@@ -1,0 +1,135 @@
+[
+    {
+        "id": 1,
+        "category_name": "Education",
+        "font_color": "#D35400",
+        "color_bg_btn": "#E59866",
+        "color_bg": "#F6DDCC",
+        "category_title": "Underprivileged Scholarships",
+        "description": "Establishing a scholarship fund to support students in pursuing higher education. The fund aims to provide financial assistance to underprivileged individuals who demonstrate academic potential but lack the means to afford higher education. By investing in their education, we aim to empower these students to break the cycle of poverty and achieve their full potential.",
+        "donate_amount": "$200",
+        "img": "/src/assets/images/education1.jpg"
+    },
+    {
+        "id": 2,
+        "category_name": "Healthcare",
+        "font_color": "#0000ff",
+        "color_bg_btn": "#87CEEB",
+        "color_bg": "#ADD8E6",
+        "category_title": "Medical Supplies Assistance",
+        "description": "Providing medical supplies and equipment to hospitals in need. Many hospitals in underserved areas lack adequate medical supplies and equipment, compromising their ability to provide quality healthcare services. This initiative aims to address this issue by providing essential medical supplies and equipment to hospitals in need, ensuring that they can effectively care for their patients.",
+        "donate_amount": "$90",
+        "img": "/src/assets/images/health3.jpg"
+    },
+    {
+        "id": 3,
+        "category_name": "Education",
+        "font_color": "#D35400",
+        "color_bg_btn": "#E59866",
+        "color_bg": "#F6DDCC",
+        "category_title": "Improved School Infrastructure",
+        "description": "Improving school infrastructure to create better learning environments. Many schools in underserved areas lack basic facilities such as adequate classrooms, libraries, and laboratories, hindering the learning experience for students. This initiative aims to upgrade school infrastructure to provide a conducive environment for learning, enabling students to thrive academically and reach their full potential.",
+        "donate_amount": "$230",
+        "img": "/src/assets/images/education.jpg"
+    },
+    {
+        "id": 4,
+        "category_name": "Healthcare",
+        "font_color": "#0000ff",
+        "color_bg_btn": "#87CEEB",
+        "color_bg": "#ADD8E6",
+        "category_title": "Clinic Establishment Support",
+        "description": "Contributing to the establishment of medical clinics in underserved areas. Many communities lack access to basic healthcare services due to a shortage of medical facilities. This initiative aims to address this gap by providing support for the establishment of medical clinics in underserved areas, ensuring that individuals have access to essential healthcare services and medical professionals.",
+        "donate_amount": "$180",
+        "img": "/src/assets/images/health1.jpg"
+    },
+    {
+        "id": 5,
+        "category_name": "Food",
+        "font_color": "#008000",
+        "color_bg_btn": "#32CD32",
+        "color_bg": "#90EE90",
+        "category_title": "Organized Food Drives",
+        "description": "Organizing food drives to collect non-perishable items for local food banks. Food banks play a crucial role in addressing food insecurity by providing essential food items to individuals and families in need. This initiative aims to support local food banks by organizing food drives to collect non-perishable items, ensuring that they have an adequate supply of food to distribute to those in need.",
+        "donate_amount": "$170",
+        "img": "/src/assets/images/food2.jpg"
+    },
+    {
+        "id": 6,
+        "category_name": "Education",
+        "font_color": "#D35400",
+        "color_bg_btn": "#E59866",
+        "color_bg": "#F6DDCC",
+        "category_title": "STEM Youth Program",
+        "description": "Supporting a STEM education program for underprivileged youth. This program aims to provide hands-on learning experiences in science, technology, engineering, and mathematics (STEM) fields to students from underserved communities. By fostering interest and proficiency in STEM subjects, we aim to prepare these young individuals for future academic and career success in fields that are vital for innovation and progress.",
+        "donate_amount": "$150",
+        "img": "/src/assets/images/education2.jpg"
+    },
+    {
+        "id": 7,
+        "category_name": "Food",
+        "font_color": "#008000",
+        "color_bg_btn": "#32CD32",
+        "color_bg": "#90EE90",
+        "category_title": "Nutritious Meal Donations",
+        "description": "Donating to provide nutritious meals to those in need. Many individuals, especially in underserved communities, struggle with food insecurity and lack access to nutritious meals. This initiative aims to address this issue by providing nutritious meals to those in need, ensuring that they have access to the sustenance they need to lead healthy and fulfilling lives.",
+        "donate_amount": "$220",
+        "img": "/src/assets/images/food.jpg"
+    },
+    {
+        "id": 8,
+        "category_name": "Clothing",
+        "font_color": "#CB4335",
+        "color_bg_btn": "#EC7063",
+        "color_bg": "#F1948A",
+        "category_title": "Warm Clothing Drive",
+        "description": "Collecting clothing donations to distribute warm clothing to those in need. Many individuals, especially in cold climates, lack access to warm clothing during the winter months. This initiative aims to address this issue by collecting clothing donations and distributing warm clothing to those in need, ensuring that they can stay warm and comfortable during the cold winter months.",
+        "donate_amount": "$180",
+        "img": "/src/assets/images/cloth1.jpg"
+    },
+    
+    {
+        "id": 9,
+        "category_name": "Healthcare",
+        "font_color": "#0000ff",
+        "color_bg_btn": "#87CEEB",
+        "color_bg": "#ADD8E6",
+        "category_title": "Health Education Campaign",
+        "description": "Raising awareness about common health issues through educational campaigns. Many individuals lack access to accurate information about preventive healthcare measures and common health issues. This initiative aims to raise awareness about these issues through educational campaigns, empowering individuals to make informed decisions about their health and well-being.",
+        "donate_amount": "$130",
+        "img": "/src/assets/images/health2.jpg"
+    },
+    {
+        "id": 10,
+        "category_name": "Clothing",
+        "font_color": "#CB4335",
+        "color_bg_btn": "#EC7063",
+        "color_bg": "#F1948A",
+        "category_title": "School Uniforms Supply",
+        "description": "Supplying school uniforms to children from low-income families. School uniforms are essential for creating a sense of equality and belonging among students. However, many children from low-income families struggle to afford school uniforms. This initiative aims to address this issue by supplying school uniforms to children from low-income families, ensuring that they can attend school comfortably and with dignity.",
+        "donate_amount": "$150",
+        "img": "/src/assets/images/cloth3.jpg"
+    },
+    {
+        "id": 11,
+        "category_name": "Food",
+        "font_color": "#008000",
+        "color_bg_btn": "#32CD32",
+        "color_bg": "#90EE90",
+        "category_title": "Community Kitchen Support",
+        "description": "Volunteering at community kitchens to prepare and serve meals to the homeless. Community kitchens play a vital role in addressing food insecurity by providing hot meals to individuals experiencing homelessness and food insecurity. This initiative aims to support community kitchens by volunteering to prepare and serve meals, ensuring that those in need have access to nutritious and satisfying meals.",
+        "donate_amount": "$120",
+        "img": "/src/assets/images/food3.jpg"
+    },
+    {
+        "id": 12,
+        "category_name": "Clothing",
+        "font_color": "#CB4335",
+        "color_bg_btn": "#EC7063",
+        "color_bg": "#F1948A",
+        "category_title": "Winter Clothing Assistance",
+        "description": "Providing warm clothing to individuals during the winter season. The winter months can be especially challenging for individuals without access to warm clothing. This initiative aims to provide assistance by distributing warm clothing to individuals in need, ensuring that they can stay warm and protected from the cold weather.",
+        "donate_amount": "$220",
+        "img": "/src/assets/images/cloth4.jpg"
+    }
+]
