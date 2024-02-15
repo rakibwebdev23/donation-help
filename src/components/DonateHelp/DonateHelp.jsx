@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+import { saveCardData } from "../../utilities/storage";
 
 const DonateHelp = ({ donate }) => {
     const {id, category_name, img, category_title,font_color,color_bg_btn,color_bg} = donate || {};
@@ -9,10 +10,13 @@ const DonateHelp = ({ donate }) => {
         fontColor : font_color,
         btnBgColor: color_bg_btn
     }
-
+    const idInt = parseInt(id);
+    const handleSavedData = () =>{
+        saveCardData(idInt);
+    }
 
     return (
-        <div>
+        <div onClick={handleSavedData} >
             <Link to="/donation">
                 <div style={{backgroundColor: cardStyle.backgroundColor}} className="card rounded-b-none mb-6 mt-6  bg-base-100 shadow-xl mx-auto m-0 p-0 mr-4 ml-4">
                     <figure><img className="h-72" src={img} alt="" /></figure>

@@ -1,7 +1,41 @@
+import { useEffect, useState } from "react";
+import { getCardData } from "../../utilities/storage";
+import { Link, useLoaderData } from "react-router-dom";
+import Donate from "../Donate/Donate";
+
 const Donation = () => {
+    const totalDonations = useLoaderData();
+    const [donates, setDonates] = useState([]);
+    const [donateSeeAll, setDonateSeeAll] = useState(4);
+
+    useEffect(() => {
+        const getDonates = getCardData();
+        if (totalDonations.length > 0) {
+
+            const storedDonations = [];
+            for (const id of getDonates) {
+                const donate = totalDonations.find(donate => donate.id === id);
+                if (donate) {
+                    storedDonations.push(donate)
+                }
+            }
+            setDonates(storedDonations)
+        }
+
+    }, [totalDonations]);
     return (
         <div>
-            <h3>This is donation components</h3>
+            <div className="grid grid-cols-2 gap-6 mt-10">
+                {
+                    donates.slice(0, donateSeeAll).map(donate => <Donate
+                        key={donate.id}
+                        donate={donate}
+                    ></Donate>)
+                }
+            </div>
+            <div className={`text-center m-6 ${donateSeeAll === donates.length? 'hidden' : ''}`}>
+                <button onClick={() => setDonateSeeAll(donates.length)} className="bg-blue-500 text-white font-bold px-5 rounded-lg py-2">See All</button>
+            </div>
         </div>
     );
 };

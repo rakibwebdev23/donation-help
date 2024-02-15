@@ -9,7 +9,7 @@ const DonatesHelp = () => {
         fetch('donatesData.json')
             .then(res => res.json())
             .then(data => setDonates(data))
-    })
+    }, []);
 
     return (
         <div>

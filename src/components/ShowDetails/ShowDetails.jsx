@@ -12,6 +12,7 @@ const ShowDetails = () => {
         backGround: color_bg_btn,
     }
 
+
     return (
         <div className="flex items-center m-4 ">
             <div className="md:w-10/12 text-wrap mx-auto">
