@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+
 const Donate = ({ donate }) => {
     const { id, img, category_name, category_title, donate_amount, color_bg_btn, font_color, color_bg } = donate || {};
     const styleCard = {
@@ -18,6 +19,5 @@ const Donate = ({ donate }) => {
             </div>
         </div>
     );
-};
 
 export default Donate;

@@ -34,7 +34,7 @@ const Donation = () => {
                 }
             </div>
             <div className={`text-center m-6 ${donateSeeAll === donates.length? 'hidden' : ''}`}>
-                <button onClick={() => setDonateSeeAll(donates.length)} className="bg-blue-500 text-white font-bold px-5 rounded-lg py-2">See All</button>
+                <button onClick={() => setDonateSeeAll(donates.length)} className="bg-blue-500 text-white font-bold px-5 rounded-lg py-2 hover:bg-red-400">See All</button>
             </div>
         </div>
     );
