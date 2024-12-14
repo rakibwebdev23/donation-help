@@ -7,7 +7,7 @@ const ActiveLink = ({ to, children }) => {
             <NavLink
                 to={to}
                 className={({ isActive }) =>
-                    isActive ? 'bg-gray-500 py-1 px-2 underline rounded-md text-white' : ''}>
+                    isActive ? 'underline underline-offset-2 text-[#e67345] w-full' : ''}>
                 {children}</NavLink>
         </div>
     );
