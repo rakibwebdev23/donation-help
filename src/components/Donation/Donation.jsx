@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCardData } from "../../utilities/storage";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import Donate from "../Donate/Donate";
 
 const Donation = () => {

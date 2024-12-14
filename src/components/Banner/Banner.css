@@ -1,0 +1,105 @@
+/* Banner Container */
+.banner-container {
+    position: relative;
+    background: url("../../assets/images/cloth4.jpg") no-repeat center center/cover;
+    color: #fff;
+    text-align: left; /* Align content to the left */
+    height: 600px; /* Default height for large devices */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    font-family: "Arial", sans-serif;
+  }
+  
+  /* Overlay for better text visibility */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+  
+  /* Centered Content */
+  .banner-content {
+    position: absolute;
+    top: 50%;
+    left: 10%; /* Align content to the left side */
+    transform: translateY(-50%);
+    z-index: 2;
+    max-width: 90%;
+  }
+  
+  /* Title */
+  .banner-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: aqua;
+  }
+  
+  /* Subtitle */
+  .banner-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 500px;
+  }
+  
+  /* Donate Button */
+  .donate-button {
+    background-color: #ff7f50;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .donate-button:hover {
+    background-color: #e67345;
+    transform: scale(1.05);
+  }
+  
+  /* Responsive Height and Background Image */
+  @media (max-width: 1024px) {
+    .banner-container {
+      height: 500px; /* Medium devices */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .banner-container {
+      height: 400px; /* Tablet devices */
+      background: url("../../assets/images/food2.jpg") no-repeat center center/cover;
+    }
+  
+    .banner-title {
+      font-size: 2.2rem;
+    }
+    .banner-subtitle {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner-container {
+      height: 300px; /* Small devices */
+      background: url("../../assets/images/cloth2.jpg") no-repeat center center/cover;
+    }
+  
+    .banner-content {
+      left: 5%; /* Adjust content positioning */
+    }
+  
+    .banner-title {
+      font-size: 1.8rem;
+    }
+    .banner-subtitle {
+      font-size: 0.9rem;
+    }
+  }
+  

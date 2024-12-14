@@ -22,7 +22,7 @@ const DonatesHelp = () => {
                 }
             </div>
             <div className={`flex items-center ${showDonateLength === donates.length ? 'hidden' : ''}`}>
-                <button onClick={() => setShowDonateLength(donates.length)} className="btn btn-primary font-bold border-none text-xl hover:bg-blue-500 mx-auto mb-4">Show All</button>
+                <button onClick={() => setShowDonateLength(donates.length)} className="btn btn-primary font-bold border-none text-xl hover:bg-blue-500 mx-auto mb-4">See All</button>
             </div>
         </div>
     );
