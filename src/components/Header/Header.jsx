@@ -7,13 +7,13 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <div className="flex justify-between items-center w-full py-3 px-4 lg:pr-6 bg-black">
+        <div className="flex justify-between items-center w-full px-4 py-2 lg:pr-6 bg-[#f33756]">
             <Link to="/">
                 <img className="lg:w-20 w-14" src={imgLogo} alt="Logo" />
             </Link>
 
             {/* Desktop menu */}
-            <div className="hidden md:flex gap-6 font-semibold text-cyan-500">
+            <div className="hidden md:flex gap-6 font-bold text-black">
                 <ActiveLink to="/">Home</ActiveLink>
                 <ActiveLink to="/donation">Donation</ActiveLink>
                 <ActiveLink to="/statistics">Statistics</ActiveLink>

@@ -4,7 +4,7 @@ import img2 from "../../assets/images/education2.jpg"
 
 const Banner = () => {
   return (
-    <div className="banner-container">
+    <div className="banner-container bg-gradient-to-l from-rose-100 via-rose-100 to-rose-200">
       <div className="banner-content half-width">
         <h1 className="banner-title">Crowd Funding for a Better Tomorrow</h1>
         <p className="banner-subtitle italic">

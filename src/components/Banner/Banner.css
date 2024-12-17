@@ -6,17 +6,15 @@
     align-items: center;
     text-align: left;
     color: #333;
-    height: 600px; /* Default height */
+    height: 600px;
     font-family: "Arial", sans-serif;
   }
   
-  /* Half Width for Content and Image */
   .half-width {
     width: 50%;
     position: relative;
   }
-  
-  /* Text Content */
+
   .banner-content {
     padding: 2rem;
     z-index: 2;
@@ -25,7 +23,7 @@
   .banner-title {
     font-size: 3rem;
     font-weight: bold;
-    color: #ff7f50;
+    color: #f33756;
     margin-bottom: 20px;
   }
   
@@ -36,7 +34,7 @@
   }
   
   .donate-button {
-    background-color: #ff7f50;
+    background-color: #f33756;
     color: #fff;
     padding: 12px 24px;
     font-size: 1rem;
@@ -48,11 +46,11 @@
   }
   
   .donate-button:hover {
-    background-color: #e67345;
+    background-color: #d11b39;
+    color: black;
     transform: scale(1.05);
   }
-  
-  /* Image Container */
+
   .image-container {
     display: flex;
     justify-content: center;
@@ -83,7 +81,7 @@
     }
   
     .half-width {
-      width: 100%; /* Full width for both sections */
+      width: 100%;
     }
   
     .banner-content {
