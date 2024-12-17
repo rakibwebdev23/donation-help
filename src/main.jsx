@@ -12,10 +12,12 @@ import Statistics from './components/Statistics/Statistics.jsx';
 import About from './components/About/About.jsx';
 import ShowDetails from './components/ShowDetails/ShowDetails.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
-    path: '/', 
+    path: '/',
     element: <Root></Root>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
         loader: () => fetch('/donatesData.json')
       },
       {
-        path: '/statistics', 
+        path: '/statistics',
         element: <Statistics></Statistics>
       },
       {
@@ -47,6 +49,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <div className='max-w-screen-xl mx-auto bg-white text-black'>
+        <RouterProvider router={router} />
+      </div>
+    </QueryClientProvider>
   </React.StrictMode>,
 )

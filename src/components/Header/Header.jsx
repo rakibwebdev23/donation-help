@@ -12,20 +12,17 @@ const Header = () => {
                 <img className="lg:w-20 w-14" src={imgLogo} alt="Logo" />
             </Link>
 
-            {/* Desktop Navbar */}
+            {/* Desktop menu */}
             <div className="hidden md:flex gap-6 font-semibold text-cyan-500">
                 <ActiveLink to="/">Home</ActiveLink>
                 <ActiveLink to="/donation">Donation</ActiveLink>
                 <ActiveLink to="/statistics">Statistics</ActiveLink>
                 <ActiveLink to="/about">About</ActiveLink>
             </div>
-
-            {/* Mobile Menu Button */}
             <button
                 className="md:hidden text-black focus:outline-none"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-                {/* Hamburger Icon */}
                 <svg
                     className="w-6 h-6 text-white ml-6"
                     fill="none"
@@ -42,11 +39,10 @@ const Header = () => {
                 </svg>
             </button>
 
-            {/* Mobile Dropdown Menu */}
+            {/* Mobile Dropdown menu */}
             <div
-                className={`absolute top-16 right-0 bg-white shadow-lg rounded-lg z-10 w-48 md:hidden ${
-                    isMenuOpen ? "block" : "hidden"
-                }`}
+                className={`absolute top-16 right-0 bg-white shadow-lg rounded-lg z-10 w-48 md:hidden ${isMenuOpen ? "block" : "hidden"
+                    }`}
             >
                 <ul className="flex flex-col gap-4 p-4 font-semibold text-black">
                     <li>
