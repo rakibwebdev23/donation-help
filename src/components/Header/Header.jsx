@@ -8,12 +8,9 @@ const Header = () => {
     return (
         <header className="bg-gradient-to-r from-pink-500 to-red-500 shadow-lg">
             <div className="container mx-auto flex items-center justify-between px-6 py-4">
-                {/* Logo */}
                 <NavLink to="/">
                     <img className="w-14 h-auto" src={imgLogo} alt="Donation Logo" />
                 </NavLink>
-
-                {/* Desktop Navigation */}
                 <nav className="hidden md:flex space-x-6 font-semibold text-black">
                     <NavLink
                         to="/"
@@ -56,8 +53,6 @@ const Header = () => {
                         About
                     </NavLink>
                 </nav>
-
-                {/* Mobile Menu Toggle */}
                 <button
                     className="md:hidden text-white focus:outline-none"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -95,10 +90,10 @@ const Header = () => {
                     )}
                 </button>
             </div>
-
-            {/* Mobile Dropdown Menu */}
             {isMenuOpen && (
-                <nav className="md:hidden bg-black text-white">
+                <nav
+                    className="md:hidden bg-pink-600 text-white fixed top-0 left-0 w-full h-1/2 z-50 bg-opacity-90"
+                >
                     <ul className="flex flex-col items-center space-y-4 py-6">
                         <li>
                             <NavLink
