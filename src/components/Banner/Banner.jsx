@@ -4,9 +4,9 @@ import img2 from "../../assets/images/education2.jpg"
 
 const Banner = () => {
   return (
-    <div className="banner-container bg-gradient-to-r from-rose-100 via-rose-200 to-rose-300">
+    <div className="banner-container bg-gradient-to-r from-gray-100 via-rose-100 to-rose-200">
       <div className="banner-content half-width">
-      <h1 className="banner-title">Help Build a <br />Brighter Tomorrow</h1>
+        <h1 className="banner-title">Help Build a <br />Brighter Tomorrow</h1>
         <p className="banner-subtitle italic">
           Join us in helping poor families, providing essential support, and
           creating opportunities for a brighter future. Together, we can make a

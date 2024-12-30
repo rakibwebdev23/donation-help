@@ -1,65 +1,161 @@
 import { useState } from "react";
-import ActiveLink from "../ActiveLink/ActiveLink";
+import { NavLink } from "react-router-dom";
 import imgLogo from "../../../public/donation.png";
-import { Link } from "react-router-dom";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <div className="flex justify-between items-center w-full px-4 py-2 lg:pr-6 bg-[#f33756]">
-            <Link to="/">
-                <img className="lg:w-20 w-14" src={imgLogo} alt="Logo" />
-            </Link>
+        <header className="bg-gradient-to-r from-pink-500 to-red-500 shadow-lg">
+            <div className="container mx-auto flex items-center justify-between px-6 py-4">
+                {/* Logo */}
+                <NavLink to="/">
+                    <img className="w-14 h-auto" src={imgLogo} alt="Donation Logo" />
+                </NavLink>
 
-            {/* Desktop menu */}
-            <div className="hidden md:flex gap-6 font-bold text-black">
-                <ActiveLink to="/">Home</ActiveLink>
-                <ActiveLink to="/donation">Donation</ActiveLink>
-                <ActiveLink to="/statistics">Statistics</ActiveLink>
-                <ActiveLink to="/about">About</ActiveLink>
-            </div>
-            <button
-                className="md:hidden text-black focus:outline-none"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-                <svg
-                    className="w-6 h-6 text-white ml-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
+                {/* Desktop Navigation */}
+                <nav className="hidden md:flex space-x-6 font-semibold text-black">
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "text-white border-b-2 border-black"
+                                : "hover:text-white transition-colors"
+                        }
+                    >
+                        Home
+                    </NavLink>
+                    <NavLink
+                        to="/donation"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "text-white border-b-2 border-black"
+                                : "hover:text-white transition-colors"
+                        }
+                    >
+                        Donation
+                    </NavLink>
+                    <NavLink
+                        to="/statistics"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "text-white border-b-2 border-black"
+                                : "hover:text-white transition-colors"
+                        }
+                    >
+                        Statistics
+                    </NavLink>
+                    <NavLink
+                        to="/about"
+                        className={({ isActive }) =>
+                            isActive
+                                ? "text-white border-b-2 border-black"
+                                : "hover:text-white transition-colors"
+                        }
+                    >
+                        About
+                    </NavLink>
+                </nav>
+
+                {/* Mobile Menu Toggle */}
+                <button
+                    className="md:hidden text-white focus:outline-none"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4 6h16M4 12h16M4 18h16"
-                    ></path>
-                </svg>
-            </button>
-
-            {/* Mobile Dropdown menu */}
-            <div
-                className={`absolute top-16 right-0 bg-white shadow-lg rounded-lg z-10 w-48 md:hidden ${isMenuOpen ? "block" : "hidden"
-                    }`}
-            >
-                <ul className="flex flex-col gap-4 p-4 font-semibold text-black">
-                    <li>
-                        <ActiveLink to="/" onClick={() => setIsMenuOpen(false)}>Home</ActiveLink>
-                    </li>
-                    <li>
-                        <ActiveLink to="/donation" onClick={() => setIsMenuOpen(false)}>Donation</ActiveLink>
-                    </li>
-                    <li>
-                        <ActiveLink to="/statistics" onClick={() => setIsMenuOpen(false)}>Statistics</ActiveLink>
-                    </li>
-                    <li>
-                        <ActiveLink to="/about" onClick={() => setIsMenuOpen(false)}>About</ActiveLink>
-                    </li>
-                </ul>
+                    {isMenuOpen ? (
+                        <svg
+                            className="w-6 h-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    ) : (
+                        <svg
+                            className="w-6 h-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
+                        </svg>
+                    )}
+                </button>
             </div>
-        </div>
+
+            {/* Mobile Dropdown Menu */}
+            {isMenuOpen && (
+                <nav className="md:hidden bg-black text-white">
+                    <ul className="flex flex-col items-center space-y-4 py-6">
+                        <li>
+                            <NavLink
+                                to="/"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-blue-500 font-bold"
+                                        : "hover:text-gray-400 transition-colors"
+                                }
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/donation"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-blue-500 font-bold"
+                                        : "hover:text-gray-400 transition-colors"
+                                }
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Donation
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/statistics"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-blue-500 font-bold"
+                                        : "hover:text-gray-400 transition-colors"
+                                }
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Statistics
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/about"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? "text-blue-500 font-bold"
+                                        : "hover:text-gray-400 transition-colors"
+                                }
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                About
+                            </NavLink>
+                        </li>
+                    </ul>
+                </nav>
+            )}
+        </header>
     );
 };
 

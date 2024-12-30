@@ -43,23 +43,18 @@ const DonatesHelp = () => {
 
     return (
         <div className="container mx-auto px-4">
-            {/* Section Title */}
             <SectionTitle
                 title="Donate to Help"
                 subTitle="Your contribution can change lives. Browse our categories and make a difference."
             />
-
-            {/* Grid Layout */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {donates.slice(0, showDonateLength).map((donate) => (
                     <DonateHelp
-                        key={donate.id || donate._id} // Ensure unique key
+                        key={donate.id || donate._id}
                         donate={donate}
                     />
                 ))}
             </div>
-
-            {/* Show All Button */}
             {showDonateLength < donates.length && (
                 <div className="flex justify-center mt-8">
                     <button
