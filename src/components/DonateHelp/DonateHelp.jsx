@@ -16,26 +16,24 @@ const DonateHelp = ({ donate, alternate }) => {
             className={`w-full px-4 mb-8 ${alternate ? "alternate-card" : ""}`}
         >
             {/* Card Container */}
-            <div className="bg-white rounded-lg lg:h-full shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl hover:translate-y-2">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all transform hover:scale-105 hover:shadow-2xl hover:translate-y-3">
                 {/* Image Section */}
-                <figure className="relative mb-4">
+                <figure className="relative mb-6 overflow-hidden rounded-t-xl">
                     <img
-                        className="w-full h-48 sm:h-56 lg:h-64 object-cover rounded-lg"
+                        className="w-full h-48 sm:h-56 lg:h-64 object-cover"
                         src={img}
                         alt={category_name || "Donate Image"}
                     />
                 </figure>
 
                 {/* Card Content */}
-                <div className="p-6 text-left hover:bg-pink-200">
-                    <h2 className="text-xl sm:text-2xl font-semibold text-blue-600 mb-3">
-                        {category_title || "Support a Cause"}
-                    </h2>
-                    <p className="text-black mb-4">{ description}</p>
+                <div className="p-6 text-center">
+                    <h2 className="text-2xl font-semibold text-gray-800 mb-3">{category_title || "Support a Cause"}</h2>
+                    <p className="text-gray-600 text-sm sm:text-base mb-6">{description}</p>
 
                     {/* Donate Button */}
                     <Link to={`/donate/${id}`}>
-                        <button className="py-3 w-full px-6 bg-gradient-to-r from-pink-600 to-red-600 text-white font-semibold rounded-lg shadow-md hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out">
+                        <button className="w-full py-3 px-6 bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-medium rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out">
                             Donate Now
                         </button>
                     </Link>
@@ -51,6 +49,7 @@ DonateHelp.propTypes = {
         category_title: PropTypes.string.isRequired,
         id: PropTypes.number.isRequired,
         img: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
     }).isRequired,
     alternate: PropTypes.bool,
 };
