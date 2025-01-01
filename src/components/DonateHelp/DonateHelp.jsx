@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { saveCardData } from "../../utilities/storage";
 
 const DonateHelp = ({ donate, alternate }) => {
-    const { id, category_name, img, category_title } = donate || {};
+    const { id, category_name, img, category_title, description } = donate || {};
     const idInt = parseInt(id);
 
     const handleSavedData = () => {
@@ -31,9 +31,7 @@ const DonateHelp = ({ donate, alternate }) => {
                     <h2 className="text-xl sm:text-2xl font-semibold text-blue-600 mb-3">
                         {category_title || "Support a Cause"}
                     </h2>
-                    <p className="text-black mb-4">
-                        Your generous donation helps us make a meaningful impact. Join us in supporting this important cause!
-                    </p>
+                    <p className="text-black mb-4">{ description}</p>
 
                     {/* Donate Button */}
                     <Link to={`/donate/${id}`}>
