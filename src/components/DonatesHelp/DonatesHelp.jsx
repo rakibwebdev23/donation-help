@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactPaginate from "react-paginate";
 import DonateHelp from "../DonateHelp/DonateHelp";
 import SectionTitle from "../Shared/SectionTitle/SectionTitle";
 import { useQuery } from "@tanstack/react-query";
@@ -6,7 +7,8 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const DonatesHelp = () => {
     const axiosPublic = useAxiosPublic();
-    const [showDonateLength, setShowDonateLength] = useState(6);
+    const [currentPage, setCurrentPage] = useState(0); // Track current page
+    const itemsPerPage = 6; // Number of items per page
 
     // Fetch data using React Query
     const { data: donates = [], isLoading, error } = useQuery({
@@ -41,6 +43,16 @@ const DonatesHelp = () => {
         );
     }
 
+    // Calculate items for the current page
+    const offset = currentPage * itemsPerPage;
+    const currentItems = donates.slice(offset, offset + itemsPerPage);
+    const pageCount = Math.ceil(donates.length / itemsPerPage);
+
+    // Handle page change
+    const handlePageChange = ({ selected }) => {
+        setCurrentPage(selected);
+    };
+
     return (
         <div className="container mx-auto px-4">
             <SectionTitle
@@ -48,23 +60,29 @@ const DonatesHelp = () => {
                 subTitle="Your contribution can change lives. Browse our categories and make a difference."
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {donates.slice(0, showDonateLength).map((donate) => (
+                {currentItems.map((donate) => (
                     <DonateHelp
                         key={donate.id || donate._id}
                         donate={donate}
                     />
                 ))}
             </div>
-            {showDonateLength < donates.length && (
-                <div className="flex justify-center mt-8">
-                    <button
-                        onClick={() => setShowDonateLength(donates.length)}
-                        className="bg-cyan-600 text-white py-3 px-14 text-base font-semibold border-none rounded-full cursor-pointer transition-all duration-300 ease-in-out hover:bg-cyan-700"
-                    >
-                        See All
-                    </button>
-                </div>
-            )}
+
+            {/* Pagination Component */}
+            <div className="flex justify-center mt-8">
+                <ReactPaginate
+                    previousLabel={"Previous"}
+                    nextLabel={"Next"}
+                    pageCount={pageCount}
+                    onPageChange={handlePageChange}
+                    containerClassName={"pagination flex space-x-2"}
+                    activeClassName={"bg-cyan-600 text-white px-4 py-2 rounded-full"}
+                    pageClassName={"px-4 py-2 rounded-full cursor-pointer border"}
+                    previousClassName={"px-4 py-2 rounded-full cursor-pointer border"}
+                    nextClassName={"px-4 py-2 rounded-full cursor-pointer border"}
+                    disabledClassName={"opacity-50 cursor-not-allowed"}
+                />
+            </div>
         </div>
     );
 };

@@ -25,7 +25,7 @@ const Donation = () => {
     }, [totalDonations]);
     return (
         <div>
-            <div className="grid grid-cols-2 gap-6 mt-10">
+            <div className="grid lg:grid-cols-2 gap-6 mt-10 lg:px-6 px-4">
                 {
                     donates.slice(0, donateSeeAll).map(donate => <Donate
                         key={donate.id}

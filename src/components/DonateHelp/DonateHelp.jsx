@@ -62,7 +62,7 @@ const DonateHelp = ({ donate, alternate }) => {
                 </div>
             </div>
 
-            {/* Modal */}
+            {/* Modal Section */}
             {isModalOpen && (
                 <div
                     onClick={toggleModal}
