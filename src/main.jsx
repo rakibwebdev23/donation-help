@@ -7,12 +7,11 @@ import {
 } from "react-router-dom";
 import Root from './components/Layout/Root/Root.jsx';
 import Home from './components/Home/Home.jsx';
-import Donation from './components/Donation/Donation.jsx';
 import Statistics from './components/Statistics/Statistics.jsx';
 import About from './components/About/About.jsx';
-import ShowDetails from './components/ShowDetails/ShowDetails.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ShowInformation from './components/DonateHelp/ShowInformation/ShowInformation.jsx';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -26,11 +25,6 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
-        path: '/donation',
-        element: <Donation></Donation>,
-        loader: () => fetch('/donatesData.json')
-      },
-      {
         path: '/statistics',
         element: <Statistics></Statistics>
       },
@@ -39,9 +33,8 @@ const router = createBrowserRouter([
         element: <About></About>
       },
       {
-        path: '/donate/:id',
-        element: <ShowDetails></ShowDetails>,
-        loader: () => fetch('/donatesData.json')
+        path: "/donation",
+        element: <ShowInformation></ShowInformation>
       }
     ]
   }

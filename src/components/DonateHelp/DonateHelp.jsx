@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { saveCardData } from "../../utilities/storage";
+// import { saveCardData } from "../../utilities/storage";
 
 const DonateHelp = ({ donate, alternate }) => {
-    const { id, category_name, img, category_title, description } = donate || {};
-    const idInt = parseInt(id);
+    const { _id, category_name, img, category_title, description } = donate || {};
+    // const idInt = parseInt(id);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleSavedData = () => {
-        saveCardData(idInt);
-    };
+    // const handleSavedData = () => {
+    //     saveCardData(_id);
+    // };
 
+    // onClick={handleSavedData}
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
@@ -20,10 +21,9 @@ const DonateHelp = ({ donate, alternate }) => {
     return (
         <>
             <div
-                onClick={handleSavedData}
                 className={`w-full px-4 mb-8 ${alternate ? "alternate-card" : ""}`}
             >
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:bg-cyan-100 transition-all transform hover:scale-105 hover:delay-150  hover:border-rose-500 hover:border-t-4 hover:border-l-4  hover:shadow-2xl hover:translate-y-3">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:bg-cyan-100 transition-all transform hover:scale-105 hover:delay-150 hover:border-rose-500 hover:border-spacing-4 hover:border-t-4 hover:border-l-4  hover:shadow-2xl hover:translate-y-3">
                     <figure className="relative overflow-hidden rounded-t-xl">
                         <img
                             className="w-full h-48 sm:h-56 lg:h-64 object-cover"
@@ -53,7 +53,7 @@ const DonateHelp = ({ donate, alternate }) => {
                                 description
                             )}
                         </p>
-                        <Link to={`/donate/${id}`}>
+                        <Link to={`/donateamount/${_id}`}>
                             <button className="w-full py-3 px-6 bg-gradient-to-r from-sky-600 to-blue-500 text-white font-medium rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out">
                                 Donate Now
                             </button>

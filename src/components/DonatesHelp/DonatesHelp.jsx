@@ -2,26 +2,13 @@ import { useState } from "react";
 import ReactPaginate from "react-paginate";
 import DonateHelp from "../DonateHelp/DonateHelp";
 import SectionTitle from "../Shared/SectionTitle/SectionTitle";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../hooks/useAxiosPublic";
+import useData from "../hooks/useData";
 
 const DonatesHelp = () => {
-    const axiosPublic = useAxiosPublic();
-    const [currentPage, setCurrentPage] = useState(0); // Track current page
-    const itemsPerPage = 6; // Number of items per page
+    const [donates, isLoading, error] = useData() || {};
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 6;
 
-    // Fetch data using React Query
-    const { data: donates = [], isLoading, error } = useQuery({
-        queryKey: ["donates"],
-        queryFn: async () => {
-            try {
-                const res = await axiosPublic.get("/projects");
-                return res.data;
-            } catch (err) {
-                throw new Error("Failed to fetch data");
-            }
-        },
-    });
 
     // Handle loading state
     if (isLoading) {
