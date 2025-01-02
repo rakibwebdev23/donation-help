@@ -76,10 +76,10 @@ const DonatesHelp = () => {
                     pageCount={pageCount}
                     onPageChange={handlePageChange}
                     containerClassName={"pagination flex space-x-2"}
-                    activeClassName={"bg-cyan-600 text-white px-4 py-2 rounded-full"}
-                    pageClassName={"px-4 py-2 rounded-full cursor-pointer border"}
-                    previousClassName={"px-4 py-2 rounded-full cursor-pointer border"}
-                    nextClassName={"px-4 py-2 rounded-full cursor-pointer border"}
+                    activeClassName={"bg-indigo-600 text-white px-4 py-2 rounded-full"}
+                    pageClassName={"px-4 py-2 font-bold rounded-full cursor-pointer border"}
+                    previousClassName={"px-4 py-2 font-bold rounded-full cursor-pointer border"}
+                    nextClassName={"px-4 py-2 font-bold rounded-full cursor-pointer border"}
                     disabledClassName={"opacity-50 cursor-not-allowed"}
                 />
             </div>

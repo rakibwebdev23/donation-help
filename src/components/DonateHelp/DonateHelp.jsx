@@ -23,8 +23,8 @@ const DonateHelp = ({ donate, alternate }) => {
                 onClick={handleSavedData}
                 className={`w-full px-4 mb-8 ${alternate ? "alternate-card" : ""}`}
             >
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all transform hover:scale-105 hover:shadow-2xl hover:translate-y-3">
-                    <figure className="relative mb-6 overflow-hidden rounded-t-xl">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:bg-cyan-100 transition-all transform hover:scale-105 hover:delay-150  hover:border-rose-500 hover:border-t-4 hover:border-l-4  hover:shadow-2xl hover:translate-y-3">
+                    <figure className="relative overflow-hidden rounded-t-xl">
                         <img
                             className="w-full h-48 sm:h-56 lg:h-64 object-cover"
                             src={img}
@@ -44,7 +44,7 @@ const DonateHelp = ({ donate, alternate }) => {
                                             e.stopPropagation();
                                             toggleModal();
                                         }}
-                                        className="text-blue-600 underline font-bold"
+                                        className="text-blue-600 font-bold"
                                     >
                                         Read more...
                                     </button>
@@ -54,7 +54,7 @@ const DonateHelp = ({ donate, alternate }) => {
                             )}
                         </p>
                         <Link to={`/donate/${id}`}>
-                            <button className="w-full py-3 px-6 bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-medium rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out">
+                            <button className="w-full py-3 px-6 bg-gradient-to-r from-sky-600 to-blue-500 text-white font-medium rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out">
                                 Donate Now
                             </button>
                         </Link>
