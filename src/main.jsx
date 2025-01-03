@@ -12,6 +12,7 @@ import About from './components/About/About.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ShowInformation from './components/DonateHelp/ShowInformation/ShowInformation.jsx';
+import Projects from './components/Projects/Projects.jsx';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
+        path: "/createProject",
+        element: <Projects></Projects>
+      },
+      {
         path: '/statistics',
         element: <Statistics></Statistics>
       },
@@ -33,8 +38,9 @@ const router = createBrowserRouter([
         element: <About></About>
       },
       {
-        path: "/donation",
-        element: <ShowInformation></ShowInformation>
+        path: "/projects/:id",
+        element: <ShowInformation></ShowInformation>,
+        loader: ({params}) => fetch(`http://localhost:5000/projects/${params.id}`)
       }
     ]
   }
@@ -43,7 +49,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <div className='max-w-screen-xl mx-auto text-black bg-gray-100'>
+      <div className='text-black bg-gray-100'>
         <RouterProvider router={router} />
       </div>
     </QueryClientProvider>

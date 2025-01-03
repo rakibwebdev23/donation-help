@@ -1,19 +1,11 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useState } from "react";
-// import { saveCardData } from "../../utilities/storage";
 
-const DonateHelp = ({ donate, alternate }) => {
-    const { _id, category_name, img, category_title, description } = donate || {};
-    // const idInt = parseInt(id);
-
+const DonateHelp = ({ donate }) => {
+    const { _id, category_name, img, category_title, description, donate_amount } = donate || {};
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // const handleSavedData = () => {
-    //     saveCardData(_id);
-    // };
-
-    // onClick={handleSavedData}
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
@@ -21,9 +13,9 @@ const DonateHelp = ({ donate, alternate }) => {
     return (
         <>
             <div
-                className={`w-full px-4 mb-8 ${alternate ? "alternate-card" : ""}`}
+                className='w-full px-4 mb-8 transition-transform duration-300'
             >
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:bg-cyan-100 transition-all transform hover:scale-105 hover:delay-150 hover:border-rose-500 hover:border-spacing-4 hover:border-t-4 hover:border-l-4  hover:shadow-2xl hover:translate-y-3">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:shadow-2xl hover:scale-105">
                     <figure className="relative overflow-hidden rounded-t-xl">
                         <img
                             className="w-full h-48 sm:h-56 lg:h-64 object-cover"
@@ -53,7 +45,7 @@ const DonateHelp = ({ donate, alternate }) => {
                                 description
                             )}
                         </p>
-                        <Link to={`/donateamount/${_id}`}>
+                        <Link to={`/projects/${_id}`}>
                             <button className="w-full py-3 px-6 bg-gradient-to-r from-sky-600 to-blue-500 text-white font-medium rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out">
                                 Donate Now
                             </button>
@@ -70,14 +62,14 @@ const DonateHelp = ({ donate, alternate }) => {
                 >
                     <div
                         onClick={(e) => e.stopPropagation()}
-                        className={`bg-white rounded-lg p-6 w-11/12 sm:w-2/3 lg:w-1/3 transform transition-all duration-300 ${
-                            isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
-                        }`}
+                        className="bg-white rounded-lg p-6 w-11/12 sm:w-2/3 lg:w-1/3"
                     >
                         <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">
                             {category_title || "Support a Cause"}
+                            <p>Category: {category_name}</p>
+                            <p>Need:$ { donate_amount}</p>
                         </h2>
-                        <p className="text-gray-600 mb-6">{description}</p>
+                        <p className="text-gray-800 mb-6">{description}</p>
                         <div className="flex justify-end">
                             <button
                                 onClick={toggleModal}

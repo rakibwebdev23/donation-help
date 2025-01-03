@@ -41,7 +41,7 @@ const DonatesHelp = () => {
     };
 
     return (
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto max-w-screen-xl px-4">
             <SectionTitle
                 title="Donate to Help"
                 subTitle="Your contribution can change lives. Browse our categories and make a difference."
@@ -56,7 +56,7 @@ const DonatesHelp = () => {
             </div>
 
             {/* Pagination Component */}
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-10">
                 <ReactPaginate
                     previousLabel={"Previous"}
                     nextLabel={"Next"}
