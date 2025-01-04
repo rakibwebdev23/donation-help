@@ -6,7 +6,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <div className="bg-gradient-to-r from-pink-500 to-red-500 shadow-lg">
+        <div className="bg-[#ed3050]">
             <header className="max-w-screen-xl mx-auto">
                 <div className="container mx-auto flex items-center justify-between py-4">
                     <NavLink to="/">
@@ -24,14 +24,14 @@ const Header = () => {
                             Home
                         </NavLink>
                         <NavLink
-                            to="/createProject"
+                            to="/needhelp"
                             className={({ isActive }) =>
                                 isActive
                                     ? "text-white border-b-2 border-black"
                                     : "hover:text-white transition-colors"
                             }
                         >
-                            Donation
+                            Need Help
                         </NavLink>
                         <NavLink
                             to="/statistics"
@@ -111,7 +111,7 @@ const Header = () => {
                             </li>
                             <li>
                                 <NavLink
-                                    to="/createProject"
+                                    to="/needhelp"
                                     className={({ isActive }) =>
                                         isActive
                                             ? "text-blue-500 font-bold"
@@ -119,7 +119,7 @@ const Header = () => {
                                     }
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    Projects
+                                    Need Help
                                 </NavLink>
                             </li>
                             <li>

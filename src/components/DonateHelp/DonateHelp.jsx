@@ -46,7 +46,7 @@ const DonateHelp = ({ donate }) => {
                             )}
                         </p>
                         <Link to={`/projects/${_id}`}>
-                            <button className="w-full py-3 px-6 bg-gradient-to-r from-sky-600 to-blue-500 text-white font-medium rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out">
+                            <button className="w-full py-3 px-6 bg-gradient-to-r from-red-600 to-rose-600 text-white font-medium rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out">
                                 Donate Now
                             </button>
                         </Link>

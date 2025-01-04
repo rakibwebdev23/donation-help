@@ -13,20 +13,20 @@ const ShowInformation = () => {
                         alt={category_title || "Category Image"}
                         className="w-full h-44 object-cover rounded-lg shadow-md mb-6"
                     />
-                    <h2 className="text-3xl font-extrabold text-gray-900">{category_name}</h2>
+                    <h2 className="text-3xl font-extrabold text-rose-600">{category_name}</h2>
                     <h3 className="text-xl text-indigo-600 mt-2">{category_title}</h3>
                 </div>
                 <div className="mt-6 space-y-4">
                     <p className="text-lg font-semibold text-gray-700">
-                        <span className="text-indigo-500">Donation Amount:</span> $ {donate_amount}
+                        <span className="text-indigo-600">Donation Amount:</span> $ {donate_amount}
                     </p>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-800 leading-relaxed">
                         {description || "No description available."}
                     </p>
                 </div>
                 <div className="mt-8 text-center">
                     <button
-                        className="px-6 py-3 text-white font-bold bg-indigo-500 hover:bg-indigo-600 rounded-lg shadow transition-all duration-300"
+                        className="px-6 py-3 text-white font-bold bg-rose-600 hover:bg-rose-700 rounded-lg shadow transition-all duration-300"
                         onClick={() => alert("Thank you for your donation!")}
                     >
                         Donate Now
