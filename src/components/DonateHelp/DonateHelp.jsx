@@ -64,12 +64,12 @@ const DonateHelp = ({ donate }) => {
                         onClick={(e) => e.stopPropagation()}
                         className="bg-white rounded-lg p-6 w-11/12 sm:w-2/3 lg:w-1/3"
                     >
-                        <h2 className="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">
+                        <h2 className="lg:text-2xl font-bold text-rose-600 mb-4 border-b pb-2">
                             {category_title || "Support a Cause"}
-                            <p>Category: {category_name}</p>
-                            <p>Need:$ { donate_amount}</p>
                         </h2>
-                        <p className="text-gray-800 mb-6">{description}</p>
+                        <p className="lg:text-xl font-semibold"><span className="text-blue-600">Category: </span> {category_name}</p>
+                        <p className="lg:text-xl font-semibold"><span className="text-blue-600">Need: </span>$ {donate_amount}</p>
+                        <p className="text-gray-800 mb-6 mt-2">{description}</p>
                         <div className="flex justify-end">
                             <button
                                 onClick={toggleModal}

@@ -1,19 +1,58 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import help1 from "../../assets/images/helpHand/help1.jpg";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const Projects = () => {
     const [isSliderOpen, setIsSliderOpen] = useState(false);
     const { register, handleSubmit, reset } = useForm();
+    const axiosSecure = useAxiosSecure();
+    const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
     const toggleSlider = () => {
         setIsSliderOpen(!isSliderOpen);
     };
 
-    const onSubmit = (data) => {
-        console.log("Form Data:", data);
-        reset();
-        setIsSliderOpen(false);
+    const onSubmit = async (data) => {
+        const imageFile = { image: data.image[0] };
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+            headers: { "Content-Type": "multipart/form-data" }
+        });
+
+        if (res.data.success) {
+            const projectDetails = {
+                category_name: data.categoryName,
+                category_title: data.categoryTitle,
+                description: data.description,
+                donate_amount: data.amount,
+                img: res.data.data.display_url
+            }
+            console.log(projectDetails);
+            const projectRes = await axiosSecure.post("/projects", projectDetails);
+            console.log(projectRes.data);
+            if (projectRes.data.insertedId) {
+                reset();
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "Good Job",
+                    text: "You have successfully Create this project for help",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/');
+            }
+        }
+
+
+
     };
 
     return (
@@ -66,7 +105,7 @@ const Projects = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label className="block text-sm font-bold text-black">
-                                    Category Name
+                                    Project Category
                                 </label>
                                 <input
                                     {...register("categoryName", { required: true })}
@@ -77,7 +116,7 @@ const Projects = () => {
                             </div>
                             <div>
                                 <label className="block text-sm font-bold text-black">
-                                    Category Title
+                                    Project Title
                                 </label>
                                 <input
                                     {...register("categoryTitle", { required: true })}
@@ -99,7 +138,7 @@ const Projects = () => {
                             />
                         </div>
 
-                        <div>
+                        {/* <div>
                             <label className="block text-sm font-bold text-black">
                                 Image URL
                             </label>
@@ -109,7 +148,7 @@ const Projects = () => {
                                 className="w-full mt-1 p-3 rounded bg-white shadow-md"
                                 placeholder="Enter image URL"
                             />
-                        </div>
+                        </div> */}
                         <div>
                             <label className="block text-sm font-bold text-black">
                                 Description
@@ -120,6 +159,15 @@ const Projects = () => {
                                 rows="4"
                                 placeholder="Enter description"
                             ></textarea>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-bold text-black">
+                                Upload Image
+                            </label>
+                            <input type="file" className="file-input file-input-bordered w-full max-w-xs"
+                                {...register("image", { required: true })}
+                            />
                         </div>
 
                         <button

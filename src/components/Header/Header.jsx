@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <div className="bg-[#ed3050]">
             <header className="max-w-screen-xl mx-auto">
-                <div className="container mx-auto flex items-center justify-between py-4">
+                <div className="container mx-auto flex items-center justify-between py-4 px-6 lg:px-2">
                     <NavLink to="/">
                         <img className="w-14 h-auto" src={imgLogo} alt="Donation Logo" />
                     </NavLink>
