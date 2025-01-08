@@ -4,8 +4,8 @@ import img2 from "../../assets/images/education2.jpg"
 
 const Banner = () => {
   return (
-     <div className="banner-container">
-      <div className="banner-content">
+    <div className="banner-container">
+      <div className="banner-content w-1/2">
         <h1 className="banner-title">Help Build a <br /> Brighter Tomorrow</h1>
         <p className="banner-subtitle italic">
           Join us in helping poor families, providing essential support, and
@@ -14,7 +14,7 @@ const Banner = () => {
         </p>
         <button className="donate-button">Donate Now</button>
       </div>
-      <div className="image-container">
+      <div className="image-container w-1/2">
         <img
           src={img1}
           alt="Main Image"

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import { useState } from "react";
 
 const DonateHelp = ({ donate }) => {
@@ -13,22 +12,35 @@ const DonateHelp = ({ donate }) => {
     return (
         <>
             <div
-                className='w-full px-4 mb-8 transition-transform duration-300'
+                className='group bg-white rounded-xl shadow-md hover:shadow-lg'
             >
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:shadow-2xl hover:scale-105">
-                    <figure className="relative overflow-hidden rounded-t-xl">
-                        <img
-                            className="w-full h-48 sm:h-56 lg:h-64 object-cover"
-                            src={img}
-                            alt={category_name || "Donate Image"}
-                        />
-                    </figure>
-                    <div className="p-6 text-left">
-                        <h2 className="text-2xl font-semibold text-gray-800 mb-3">
-                            {category_title || "Support a Cause"}
+                <div className="bg-white rounded-xl shadow-lg">
+                    <div className="relative">
+                        <div className="aspect-video overflow-hidden rounded-t-xl">
+                            <img
+                                src={img}
+                                alt={category_name || "Donation Campaign"}
+                                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                            />
+                        </div>
+                        <div className="absolute top-4 left-4">
+                            <span className="inline-flex px-3 py-1.5 bg-white/95 text-rose-600 text-sm font-medium rounded-full">
+                                {category_name || "No Category"}
+                            </span>
+                        </div>
+                    </div>
+                    <div className="flex justify-between items-start gap-4 mb-3 my-4 px-4">
+                        <h2 className="text-xl font-semibold text-gray-900 leading-tight">
+                            {category_title || "No Title"}
                         </h2>
-                        <p className="text-gray-600 text-sm sm:text-base mb-6">
-                            {description.length > 200 ? (
+                        <span className="text-lg font-semibold text-rose-600">
+                            ${donate_amount || "0"}
+                        </span>
+                    </div>
+                    <div className="text-left w-full">
+                        <p className="text-gray-800 line-clamp-3 px-4">
+
+                            {description.length > 0 ? (
                                 <>
                                     {description.slice(0, 100)}{" "}
                                     <button
@@ -36,7 +48,7 @@ const DonateHelp = ({ donate }) => {
                                             e.stopPropagation();
                                             toggleModal();
                                         }}
-                                        className="text-blue-600 font-bold"
+                                        className="ml-1 text-blue-600 hover:text-blue-700 font-medium "
                                     >
                                         Read more...
                                     </button>
@@ -46,7 +58,9 @@ const DonateHelp = ({ donate }) => {
                             )}
                         </p>
                         <Link to={`/projects/${_id}`}>
-                            <button className="w-full py-3 px-6 bg-gradient-to-r from-red-600 to-rose-600 text-white font-medium rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out">
+                            <button className="w-full py-3 bg-rose-600 text-white font-medium rounded-b-xl
+                         hover:bg-rose-700 active:bg-rose-800   transition-colorS duration-200
+                             focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 mt-4">
                                 Donate Now
                             </button>
                         </Link>
@@ -83,17 +97,6 @@ const DonateHelp = ({ donate }) => {
             )}
         </>
     );
-};
-
-DonateHelp.propTypes = {
-    donate: PropTypes.shape({
-        category_name: PropTypes.string.isRequired,
-        category_title: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
-        img: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-    }).isRequired,
-    alternate: PropTypes.bool,
 };
 
 export default DonateHelp;
