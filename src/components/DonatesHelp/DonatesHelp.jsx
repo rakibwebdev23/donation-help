@@ -3,6 +3,7 @@ import ReactPaginate from "react-paginate";
 import DonateHelp from "../DonateHelp/DonateHelp";
 import SectionTitle from "../Shared/SectionTitle/SectionTitle";
 import useData from "../hooks/useData";
+import Container from "../Container/Container";
 
 const DonatesHelp = () => {
     const [donates, isLoading, error] = useData() || {};
@@ -41,36 +42,38 @@ const DonatesHelp = () => {
     };
 
     return (
-        <div className="container mx-auto max-w-screen-xl px-4">
-            <SectionTitle
-                title="Donate to Help"
-                subTitle="Your contribution can change lives. Browse our categories and make a difference."
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:px-12 md:px-8 px-4">
-                {currentItems.map((donate) => (
-                    <DonateHelp
-                        key={donate.id || donate._id}
-                        donate={donate}
-                    />
-                ))}
-            </div>
-
-            {/* Pagination Component */}
-            <div className="flex justify-center my-16">
-                <ReactPaginate
-                    previousLabel={"Previous"}
-                    nextLabel={"Next"}
-                    pageCount={pageCount}
-                    onPageChange={handlePageChange}
-                    containerClassName={"pagination flex space-x-2"}
-                    activeClassName={"bg-red-600 text-white px-4 py-2 rounded"}
-                    pageClassName={"px-4 py-2 font-bold rounded cursor-pointer border"}
-                    previousClassName={"px-4 py-2 font-bold rounded cursor-pointer border"}
-                    nextClassName={"px-4 py-2 font-bold rounded cursor-pointer border"}
-                    disabledClassName={"opacity-50 cursor-not-allowed"}
+        <Container>
+            <div className="container">
+                <SectionTitle
+                    title="Donate to Help"
+                    subTitle="Your contribution can change lives. Browse our categories and make a difference."
                 />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {currentItems.map((donate) => (
+                        <DonateHelp
+                            key={donate.id || donate._id}
+                            donate={donate}
+                        />
+                    ))}
+                </div>
+
+                {/* Pagination Component */}
+                <div className="flex justify-center my-16">
+                    <ReactPaginate
+                        previousLabel={"Previous"}
+                        nextLabel={"Next"}
+                        pageCount={pageCount}
+                        onPageChange={handlePageChange}
+                        containerClassName={"pagination flex space-x-2"}
+                        activeClassName={"bg-red-600 text-white px-4 py-2 rounded"}
+                        pageClassName={"px-4 py-2 font-bold rounded cursor-pointer border"}
+                        previousClassName={"px-4 py-2 font-bold rounded cursor-pointer border"}
+                        nextClassName={"px-4 py-2 font-bold rounded cursor-pointer border"}
+                        disabledClassName={"opacity-50 cursor-not-allowed"}
+                    />
+                </div>
             </div>
-        </div>
+        </Container>
     );
 };
 

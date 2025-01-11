@@ -6,7 +6,7 @@ const Banner = () => {
   return (
     <div className="banner-container">
       <div className="banner-content w-1/2">
-        <h1 className="banner-title">Help Build a <br /> Brighter Tomorrow</h1>
+        <h1 className="banner-title"><span className="first-title">Help Build a</span> <br /> Brighter Tomorrow</h1>
         <p className="banner-subtitle italic">
           Join us in helping poor families, providing essential support, and
           creating opportunities for a brighter future. Together, we can make a

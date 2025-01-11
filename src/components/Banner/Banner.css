@@ -5,8 +5,8 @@
   justify-content: center;
   gap: 30px;
   background-color: #fef3f3;
-  padding: 30px 20px;
   height: 600px;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -36,17 +36,21 @@
 
 .banner-content {
   flex: 1;
-  max-width: 500px;
+  max-width: 600px;
   z-index: 1;
   text-align: left;
 }
 
 .banner-title {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
   color: #e11d48;
   line-height: 1.2;
   margin-bottom: 20px;
+}
+
+.first-title{
+  color: black;
 }
 
 .banner-subtitle {
@@ -77,7 +81,7 @@
 .image-container {
   display: flex;
   justify-content: center;
-  width: 600px;
+  width: 620px;
   align-items: flex-start;
   position: relative;
 }
