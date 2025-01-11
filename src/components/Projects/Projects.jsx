@@ -40,15 +40,36 @@ const Projects = () => {
             if (projectRes.data.insertedId) {
                 reset();
                 Swal.fire({
-                    position: "top-center",
+                    position: "center", // Centered position for more focus
                     icon: "success",
-                    title: "Good Job",
-                    text: "You have successfully Create this project for help",
+                    title: "<h2 style='color:#4CAF50;'>🎉 Great Job!</h2>", // Styled title
+                    html: `
+                        <p style="font-size:16px;color:#555;">
+                            You have successfully created this project to help others! 🥳
+                        </p>
+                    `, // Rich text for better presentation
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 2000, // Adjusted time
+                    background: "#f9f9f9", // Light background for aesthetics
+                    backdrop: `
+                        rgba(0, 0, 0, 0.4)
+                        left top
+                        no-repeat
+                    `, // Subtle backdrop effect
+                    customClass: {
+                        popup: "swal-custom-popup", // For additional CSS if needed
+                    },
+                    didOpen: () => {
+                        const swalContainer = Swal.getPopup();
+                        if (swalContainer) {
+                            swalContainer.style.border = "2px solid #4CAF50";
+                            swalContainer.style.borderRadius = "10px";
+                        }
+                    }
+                }).then(() => {
+                    navigate('/'); // Navigate only after SweetAlert closes
                 });
-                navigate('/');
-            }
+            }            
         }
 
 
@@ -78,7 +99,7 @@ const Projects = () => {
                         onClick={toggleSlider}
                         className="px-8 py-3 bg-rose-600 text-white font-medium rounded-lg shadow-md hover:bg-rose-700 transition duration-300"
                     >
-                        Get Started
+                        Create Project
                     </button>
                 </div>
             </div>
@@ -137,18 +158,6 @@ const Projects = () => {
                                 placeholder="Enter amount needed"
                             />
                         </div>
-
-                        {/* <div>
-                            <label className="block text-sm font-bold text-black">
-                                Image URL
-                            </label>
-                            <input
-                                {...register("image", { required: true })}
-                                type="text"
-                                className="w-full mt-1 p-3 rounded bg-white shadow-md"
-                                placeholder="Enter image URL"
-                            />
-                        </div> */}
                         <div>
                             <label className="block text-sm font-bold text-black">
                                 Description

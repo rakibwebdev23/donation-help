@@ -46,7 +46,7 @@ const DonatesHelp = () => {
                 title="Donate to Help"
                 subTitle="Your contribution can change lives. Browse our categories and make a difference."
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:px-12 md:px-8 px-4">
                 {currentItems.map((donate) => (
                     <DonateHelp
                         key={donate.id || donate._id}
