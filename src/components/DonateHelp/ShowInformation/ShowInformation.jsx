@@ -21,7 +21,7 @@ const ShowInformation = () => {
         setIsModalOpen(!isModalOpen);
     };
 
-    const onSubmit = (data) => {
+    const onSubmit = async(data) => {
         const donateInfo = {
             name: data.name,
             email: data.email,
@@ -30,6 +30,7 @@ const ShowInformation = () => {
             amount: data
         }
         console.log(donateInfo);
+        const res = await axiosSecure.post()
     };
 
     return (
@@ -140,7 +141,7 @@ const ShowInformation = () => {
                                 <div className="text-center">
                                     <button
                                         type="submit"
-                                        className="px-6 py-3 text-white font-bold bg-rose-600 hover:bg-rose-700 rounded w-full shadow transition-all duration-300"
+                                        className="px-6 py-3 text-white font-bold bg-rose-600 hover:bg-rose-700 rounded w-full shadow transition-all duration-300 mt-2"
                                     >
                                         Checkout
                                     </button>

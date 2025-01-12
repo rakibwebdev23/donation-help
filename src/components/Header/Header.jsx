@@ -35,7 +35,7 @@ const Header = () => {
                 <div className="container mx-auto">
                     <div className="mx-auto flex items-center justify-between px-6 lg:px-0 py-7">
                         <NavLink to="/">
-                            <h2 className="text-2xl font-bold">CFD.</h2>
+                            <h2 className="text-2xl font-bold">CFBD.</h2>
                         </NavLink>
 
                         {/* Desktop Navigation */}
