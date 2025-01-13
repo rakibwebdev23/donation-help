@@ -155,16 +155,13 @@ const ShowInformation = () => {
                     )}
                   </div>
                   <div>
-                    <label className="block text-black font-semibold mb-2">Address <span className="text-gray-700">(Optional)</span></label>
+                    <label className="block text-black font-semibold mb-2">Address <span className="text-gray-500">(Optional)</span></label>
                     <input
                       type="text"
                       placeholder="Your address"
                       {...register("address", { required: "Address is required" })}
                       className="w-full px-4 py-2 rounded shadow shadow-slate-500"
                     />
-                    {errors.address && (
-                      <p className="text-red-500 text-sm mt-1">{errors.address.message}</p>
-                    )}
                   </div>
                   <div>
                     <label className="block text-black font-semibold mb-2">

@@ -1,33 +1,66 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
+
+    // Check login status when component mounts
+    useEffect(() => {
+        const user = localStorage.getItem('user');
+        setIsLoggedIn(!!user);
+    }, []);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-    const navLinks = [
+    const handleLogout = () => {
+        localStorage.removeItem('user');
+        setIsLoggedIn(false);
+        navigate('/');
+    };
+
+    const baseNavLinks = [
         { path: "/", label: "Home" },
         { path: "/needhelp", label: "Need Help" },
-        { path: "/statistics", label: "Statistics" },
         { path: "/about", label: "About" }
     ];
 
-    const NavItem = ({ path, label, isMobile = false }) => (
-        <NavLink
-            to={path}
-            className={({ isActive }) =>
-                isActive
-                    ? isMobile
-                        ? "text-white font-bold border-b-2 border-black"
-                        : "text-white border-b-2 border-black font-bold"
-                    : `hover:text-${isMobile ? 'gray-400' : 'white'} transition-colors`
+    // Dynamically add login/logout to nav links
+    const navLinks = [
+        ...baseNavLinks,
+        isLoggedIn 
+            ? { path: "#", label: "Logout", onClick: handleLogout }
+            : { path: "/signin", label: "Sign In" , }
+    ];
+
+    const NavItem = ({ path, label, onClick, isMobile = false }) => {
+        const handleClick = (e) => {
+            if (onClick) {
+                e.preventDefault();
+                onClick();
             }
-            onClick={isMobile ? toggleMenu : undefined}
-        >
-            {label}
-        </NavLink>
-    );
+            if (isMobile) {
+                toggleMenu();
+            }
+        };
+
+        return (
+            <NavLink
+                to={path}
+                className={({ isActive }) =>
+                    isActive && path !== "#"
+                        ? isMobile
+                            ? "text-white font-bold border-b-2 border-black"
+                            : "text-white border-b-2 border-black font-bold"
+                        : `hover:text-${isMobile ? 'gray-400' : 'white'} transition-colors`
+                }
+                onClick={handleClick}
+            >
+                {label}
+            </NavLink>
+        );
+    };
 
     return (
         <div className="bg-[#ed3050] sticky top-0 z-50">
@@ -40,8 +73,8 @@ const Header = () => {
 
                         {/* Desktop Navigation */}
                         <nav className="hidden md:flex space-x-8 font-bold text-black">
-                            {navLinks.map(link => (
-                                <NavItem key={link.path} {...link} />
+                            {navLinks.map((link, index) => (
+                                <NavItem key={link.path + index} {...link} />
                             ))}
                         </nav>
 
@@ -107,9 +140,9 @@ const Header = () => {
                                     </svg>
                                 </button>
                             </div>
-                            <ul className="flex flex-col items-center space-y-4 ">
-                                {navLinks.map(link => (
-                                    <li key={link.path}>
+                            <ul className="flex flex-col items-center space-y-4">
+                                {navLinks.map((link, index) => (
+                                    <li key={link.path + index}>
                                         <NavItem {...link} isMobile={true} />
                                     </li>
                                 ))}

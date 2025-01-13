@@ -7,12 +7,14 @@ import {
 } from "react-router-dom";
 import Root from './components/Layout/Root/Root.jsx';
 import Home from './components/Home/Home.jsx';
-import Statistics from './components/Statistics/Statistics.jsx';
 import About from './components/About/About.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ShowInformation from './components/DonateHelp/ShowInformation/ShowInformation.jsx';
 import Projects from './components/Projects/Projects.jsx';
+import AuthProviders from './components/Providers/AuthProviders.jsx';
+import SignIn from './components/Authentication/SignIn.jsx';
+import SignUp from './components/Authentication/SignUp.jsx';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -30,8 +32,12 @@ const router = createBrowserRouter([
         element: <Projects></Projects>
       },
       {
-        path: '/statistics',
-        element: <Statistics></Statistics>
+        path: "/signin",
+        element: <SignIn></SignIn>
+      },
+      {
+        path: "/signup",
+        element: <SignUp></SignUp>
       },
       {
         path: '/about',
@@ -40,7 +46,7 @@ const router = createBrowserRouter([
       {
         path: "/projects/:id",
         element: <ShowInformation></ShowInformation>,
-        loader: ({params}) => fetch(`http://localhost:5000/projects/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/projects/${params.id}`)
       }
     ]
   }
@@ -48,8 +54,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
+    <AuthProviders>
+      <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </AuthProviders>
   </React.StrictMode>,
 )
