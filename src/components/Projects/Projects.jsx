@@ -32,7 +32,7 @@ const Projects = () => {
                 category_name: data.categoryName,
                 category_title: data.categoryTitle,
                 description: data.description,
-                donate_amount: data.amount,
+                donate_amount: `${parseFloat(data.amount).toFixed(2)}`,
                 img: res.data.data.display_url
             }
             console.log(projectDetails);
