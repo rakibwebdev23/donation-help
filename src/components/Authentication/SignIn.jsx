@@ -5,14 +5,14 @@ import Swal from "sweetalert2";
 
 const SignIn = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const { signInUser } = useAuth();
+    const { signIn } = useAuth();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
 
     const onSubmit = data => {
         const email = data.email;
         const password = data.password;
-        signInUser(email, password)
+        signIn(email, password)
             .then(result => {
                 const user = result.user;
                 reset();
