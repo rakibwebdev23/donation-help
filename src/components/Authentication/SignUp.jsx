@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
-import Container from "../Container/Container";
+import img from "../../assets/images/helpHand/help1.jpg"
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useAuth();
@@ -64,8 +64,12 @@ const SignUp = () => {
     };
 
     return (
-        <Container>
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 px-4">
+            <div className="min-h-screen flex items-center justify-center  px-4"  style={{
+                backgroundImage: `url(${img})`,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}>
                 <div className="w-full max-w-2xl bg-rose-200 rounded-2xl shadow-2xl overflow-hidden">
                     <div className="flex flex-col md:flex-row">
                         {/* Left Side - Image/Banner */}
@@ -159,7 +163,6 @@ const SignUp = () => {
                     </div>
                 </div>
             </div>
-        </Container>
     );
 };
 

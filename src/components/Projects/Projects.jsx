@@ -4,7 +4,7 @@ import help1 from "../../assets/images/helpHand/help1.jpg";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Container from "../Container/Container";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -15,6 +15,7 @@ const Projects = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosSecure = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
+    const location = useLocation();
     const navigate = useNavigate();
 
     const toggleSlider = () => {
@@ -67,14 +68,14 @@ const Projects = () => {
                             swalContainer.style.borderRadius = "10px";
                         }
                     }
-                }).then(() => {
-                    navigate('/');
+                }).then((result) => {
+                    console.log(result);
+                    if (result.isConfirmed) {
+                        navigate("/signin", { state: { from: location } })
+                    }
                 });
             }
         }
-
-
-
     };
 
     return (
