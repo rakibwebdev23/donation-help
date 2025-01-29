@@ -54,7 +54,7 @@ const DonateHelp = ({ donate }) => {
                                 description
                             )}
                         </p>
-                        <Link to={`/projects/${_id}`}>
+                        <Link to={`/projects/${_id}`} >
                             <button className="w-full py-3 bg-rose-600 text-white font-medium rounded-b-xl hover:bg-rose-700 active:bg-rose-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 mt-4">
                                 Donate Now
                             </button>

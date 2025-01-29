@@ -1,18 +1,21 @@
 import { useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Container from "../../Container/Container";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
 
 const ShowInformation = () => {
   const donate = useLoaderData();
   const { category_name, img, category_title, description, donate_amount } = donate || {};
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const location = useLocation();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false); // Secondary state for smooth transition
+  const [isVisible, setIsVisible] = useState(false); 
 
   const {
     register,
@@ -23,52 +26,54 @@ const ShowInformation = () => {
 
   const toggleModal = () => {
     if (isModalOpen) {
-      // Start closing animation
       setIsVisible(false);
-      setTimeout(() => setIsModalOpen(false), 300); // Delay unmounting to allow transition
+      setTimeout(() => setIsModalOpen(false), 300);
     } else {
       setIsModalOpen(true);
-      setTimeout(() => setIsVisible(true), 10); // Delay visibility for animation
+      setTimeout(() => setIsVisible(true), 10);
     }
   };
 
   const onSubmit = async (data) => {
-    const donateInfo = {
-      name: data.name,
-      email: data.email,
-      address: data.address,
-      mobileNumber: data.mobile,
-      donate_amount: Number(parseFloat(data.donationAmount).toFixed(2))
-    };
-    console.log(donateInfo);
-    const res = await axiosSecure.post("/donation", donateInfo);
-    console.log(res.data);
-    if (res.data.insertedId) {
-      reset();
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "<h2 style='color:#4CAF50;'>🎉 Great Job!</h2>",
-        html: `<p style="font-size:16px;color:#555;">Thank you for your generous donation of $${donateInfo.donate_amount}! Your support makes a real difference. 🙏</p>`,
-        showConfirmButton: false,
-        timer: 2000, // Adjusted time
-        background: "#f9f9f9",
-        backdrop: `rgba(0, 0, 0, 0.4)left topno-repeat`,
-        customClass: {
-          popup: "swal-custom-popup",
-        },
-        didOpen: () => {
-          const swalContainer = Swal.getPopup();
-          if (swalContainer) {
-            swalContainer.style.border = "2px solid #4CAF50";
-            swalContainer.style.borderRadius = "10px";
+    if (user && user?.email) {
+      const donateInfo = {
+        name: data.name,
+        email: data.email,
+        address: data.address,
+        mobileNumber: data.mobile,
+        donate_amount: Number(parseFloat(data.donationAmount).toFixed(2))
+      };
+      axiosSecure.post("/donation", donateInfo)
+        .then(res => {
+          if (res.data.insertedId) {
+            reset();
+            Swal.fire({
+              position: "top-center",
+              icon: "Good Job",
+              title: "Thank you for your donation",
+              showConfirmButton: false,
+              timer: 1500
+            });
+
           }
+
+        })
+    }
+    else {
+      Swal.fire({
+        title: "You are not Sign In",
+        text: "Please Sign In to Donation",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sign In"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/signin", { state: { from: location } })
         }
-      }).then(() => {
-        navigate('/');
       });
     }
-
   };
 
   return (

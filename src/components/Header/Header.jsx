@@ -1,22 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
-
-    // Check login status when component mounts
-    useEffect(() => {
-        const user = localStorage.getItem('user');
-        setIsLoggedIn(!!user);
-    }, []);
+    const { user, logOut } = useAuth();  // Get user and logout from useAuth
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     const handleLogout = () => {
-        localStorage.removeItem('user');
-        setIsLoggedIn(false);
+        logOut();  // Use the logout function from useAuth
         navigate('/');
     };
 
@@ -26,12 +20,12 @@ const Header = () => {
         { path: "/about", label: "About" }
     ];
 
-    // Dynamically add login/logout to nav links
+    // Use user instead of isLoggedIn for conditional rendering
     const navLinks = [
         ...baseNavLinks,
-        isLoggedIn 
-            ? { path: "#", label: "Logout", onClick: handleLogout }
-            : { path: "/signin", label: "Sign In" , }
+        user 
+            ? { path: "#", label: "Sign Out", onClick: handleLogout }
+            : { path: "/signin", label: "Sign In" }
     ];
 
     const NavItem = ({ path, label, onClick, isMobile = false }) => {
