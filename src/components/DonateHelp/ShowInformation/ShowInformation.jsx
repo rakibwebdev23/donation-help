@@ -15,7 +15,7 @@ const ShowInformation = () => {
   const location = useLocation();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false); 
+  const [isVisible, setIsVisible] = useState(false);
 
   const {
     register,
@@ -48,13 +48,23 @@ const ShowInformation = () => {
           if (res.data.insertedId) {
             reset();
             Swal.fire({
-              position: "top-center",
-              icon: "Good Job",
-              title: "Thank you for your donation",
-              showConfirmButton: false,
-              timer: 1500
+              icon: "success",
+              title: "Thank You! 💖",
+              text: "Your kindness is truly appreciated.",
+              confirmButtonText: "OK",
+              confirmButtonColor: "#e11d48",
+              timer: 2000,
+              customClass: {
+                popup: "rounded-lg shadow-lg bg-white p-5 border border-rose-300",
+                title: "text-2xl font-semibold text-rose-600",
+                htmlContainer: "text-gray-600 text-base"
+              },
+              iconColor: "#e11d48",
+              backdrop: "rgba(0, 0, 0, 0.3)",
+              showCloseButton: true
             });
 
+            navigate("/");
           }
 
         })

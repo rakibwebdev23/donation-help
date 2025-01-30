@@ -33,9 +33,9 @@ const SignIn = () => {
 
     return (
         <div>
-            <div className="hero w-full min-h-screen bg-cover bg-center">
-                <div className="hero-overlay bg-black bg-opacity-60 w-full min-h-screen flex items-center justify-center px-4">
-                    <div className="card bg-black bg-opacity-70 p-8 sm:p-12 lg:w-full xl:w-1/2 max-w-screen-xl w-full rounded-xl shadow-xl">
+            <div className="hero w-full min-h-screen bg-cover">
+                <div className="hero-overlay w-full min-h-screen flex items-center justify-center px-4">
+                    <div className="card bg-black p-8 sm:p-12 lg:w-full xl:w-1/2 max-w-screen-xl w-full rounded-xl shadow-xl">
                         <h2 className="text-orange-500 text-3xl sm:text-4xl font-bold text-center mb-6">Sign In</h2>
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                             <div className="form-control">
