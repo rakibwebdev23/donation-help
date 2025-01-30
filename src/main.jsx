@@ -15,6 +15,7 @@ import Projects from './components/Projects/Projects.jsx';
 import AuthProviders from './components/Providers/AuthProviders.jsx';
 import SignIn from './components/Authentication/SignIn.jsx';
 import SignUp from './components/Authentication/SignUp.jsx';
+import PrivateRoutes from './components/Authentication/PrivateRoutes/PrivateRoutes.jsx';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/needhelp",
-        element: <Projects></Projects>
+        element: <PrivateRoutes><Projects></Projects></PrivateRoutes>
       },
       {
         path: "/signin",
