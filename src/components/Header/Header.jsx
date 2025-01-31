@@ -12,8 +12,13 @@ const Header = () => {
   const menuItems = [
     { path: "/", label: "Home" },
     { path: "/needhelp", label: "Need Help" },
-    { path: "/about", label: "About" }
+    { path: "/about", label: "About" },
   ];
+  
+  if (user?.email) {
+    menuItems.push({ path: "/dashboard", label: "Dashboard" });
+  }
+  
 
   // Handle user logout
   const handleLogout = () => {
