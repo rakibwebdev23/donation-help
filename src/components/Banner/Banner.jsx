@@ -1,6 +1,7 @@
 import "./Banner.css";
 import img1 from "../../assets/images/education.jpg"
 import img2 from "../../assets/images/education2.jpg"
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -12,7 +13,7 @@ const Banner = () => {
           creating opportunities for a brighter future. Together, we can make a
           lasting difference in the lives of those in need.
         </p>
-        <button className="donate-button">Donate Now</button>
+        <Link to="/signin"><button className="donate-button">Donate Now</button></Link>
       </div>
       <div className="image-container w-1/2">
         <img
