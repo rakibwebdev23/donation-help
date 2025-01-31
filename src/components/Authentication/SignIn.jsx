@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import SocialSign from "./SocialSign/SocialSign";
 
 const SignIn = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -96,14 +97,14 @@ const SignIn = () => {
                             Sign In
                         </button>
 
-                        {/* Sign Up Link */}
-                        <p className="text-center text-white">
-                            Don’t have an account?{" "}
-                            <Link to="/signup" className="text-rose-600 font-semibold hover:underline">
-                                Sign Up
-                            </Link>
-                        </p>
                     </form>
+                    <SocialSign></SocialSign>
+                    <p className="text-left text-white mt-4">
+                        Don’t have an account ?{" "}
+                        <Link to="/signup" className="text-rose-600 font-semibold hover:underline">
+                            Sign Up
+                        </Link>
+                    </p>
                 </div>
             </div>
         </div>

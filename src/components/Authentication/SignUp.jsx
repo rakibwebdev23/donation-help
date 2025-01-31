@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import SocialSign from "./SocialSign/SocialSign";
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useAuth();
@@ -110,14 +111,14 @@ const SignUp = () => {
                         >
                             Create Account
                         </button>
-
-                        <p className="text-center text-white">
-                            Already have an account?{" "}
-                            <Link to="/signin" className="text-rose-600 font-semibold hover:underline">
-                                Sign In
-                            </Link>
-                        </p>
                     </form>
+                    <SocialSign></SocialSign>
+                    <p className="text-left text-white mt-4">
+                        Don’t have an account ?{" "}
+                        <Link to="/signin" className="text-rose-600 font-semibold hover:underline">
+                            Sign In
+                        </Link>
+                    </p>
                 </div>
             </div>
         </div>
