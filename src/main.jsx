@@ -57,7 +57,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProviders>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <div className='bg-gray-100'>
+          <RouterProvider router={router} />
+        </div>
       </QueryClientProvider>
     </AuthProviders>
   </React.StrictMode>,
