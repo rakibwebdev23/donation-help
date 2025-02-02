@@ -68,7 +68,8 @@ const Projects = () => {
                             swalContainer.style.borderRadius = "10px";
                         }
                     }
-                }).then((result) => {
+                })
+                    .then((result) => {
                     console.log(result);
                     if (result.isConfirmed) {
                         navigate("/signin", { state: { from: location } })
@@ -120,8 +121,8 @@ const Projects = () => {
                     </button>
 
                     {/* Slider Content */}
-                    <div className="px-8 py-6 space-y-4 bg-rose-200 h-screen">
-                        <h3 className="lg:text-3xl font-semibold text-red-600 text-left">
+                    <div className="px-8 py-6 space-y-4 bg-gray-200 h-screen">
+                        <h3 className="lg:text-3xl font-semibold text-rose-600 text-center pb-3">
                             Submit Your Project
                         </h3>
 
@@ -184,7 +185,7 @@ const Projects = () => {
 
                             <button
                                 type="submit"
-                                className="w-full py-3 bg-red-600 text-white font-medium rounded-lg shadow-lg hover:bg-red-700 transition duration-300 "
+                                className="w-full py-3 bg-red-600 text-white font-medium rounded shadow-lg hover:bg-red-700 transition duration-300 "
                             >
                                 Submit
                             </button>

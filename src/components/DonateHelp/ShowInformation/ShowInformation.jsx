@@ -63,7 +63,6 @@ const ShowInformation = () => {
               backdrop: "rgba(0, 0, 0, 0.3)",
               showCloseButton: true
             });
-
             navigate("/");
           }
 
@@ -130,7 +129,7 @@ const ShowInformation = () => {
               }`}
           >
             <div
-              className={`relative bg-gray-50 rounded-lg shadow-lg p-6 w-full max-w-2xl 
+              className={`relative bg-gray-200 rounded-lg shadow-lg p-6 w-full max-w-2xl 
               transform transition-transform duration-300 ease-in-out ${isVisible ? "scale-100" : "scale-95"
                 }`}
             >
@@ -150,20 +149,20 @@ const ShowInformation = () => {
                     type="text"
                     placeholder="Your name"
                     {...register("name", { required: "Name is required" })}
-                    className="w-full px-4 py-2 rounded shadow shadow-slate-500"
+                    className="w-full px-4 py-2 rounded shadow bg-white"
                   />
                   {errors.name && (
                     <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
                   )}
                 </div>
-                <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+                <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 ">
                   <div>
                     <label className="block text-black font-semibold mb-2">Email</label>
                     <input
                       type="email"
                       placeholder="Your email"
                       {...register("email", { required: "Email is required" })}
-                      className="w-full px-4 py-2 rounded shadow shadow-slate-500"
+                      className="w-full px-4 py-2 rounded shadow bg-white"
                     />
                     {errors.email && (
                       <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
@@ -175,7 +174,7 @@ const ShowInformation = () => {
                       type="text"
                       placeholder="Your address"
                       {...register("address", { required: "Address is required" })}
-                      className="w-full px-4 py-2 rounded shadow shadow-slate-500"
+                      className="w-full px-4 py-2 rounded shadow bg-white"
                     />
                   </div>
                   <div>
@@ -192,7 +191,7 @@ const ShowInformation = () => {
                           message: "Enter a valid mobile number",
                         },
                       })}
-                      className="w-full px-4 py-2 rounded shadow shadow-slate-500"
+                      className="w-full px-4 py-2 rounded shadow bg-white"
                     />
                     {errors.mobile && (
                       <p className="text-red-500 text-sm mt-1">{errors.mobile.message}</p>
@@ -209,7 +208,7 @@ const ShowInformation = () => {
                         required: "Donation amount is required",
                         min: { value: 1, message: "Minimum donation amount is $1" },
                       })}
-                      className="w-full px-4 py-2 rounded shadow shadow-slate-500"
+                      className="w-full px-4 py-2 rounded shadow bg-white"
                     />
                     {errors.donationAmount && (
                       <p className="text-red-500 text-sm mt-1">
@@ -219,12 +218,7 @@ const ShowInformation = () => {
                   </div>
                 </div>
                 <div className="text-center">
-                  <button
-                    type="submit"
-                    className="px-6 py-3 text-white font-bold bg-rose-600 hover:bg-rose-700 rounded w-full shadow transition-all duration-300 mt-2"
-                  >
-                    Checkout
-                  </button>
+                  <input className="px-6 py-3 text-white font-bold bg-rose-600 hover:bg-rose-700 rounded w-full shadow transition-all duration-300 mt-2" type="submit" value="CheckOut" />
                 </div>
               </form>
             </div>
