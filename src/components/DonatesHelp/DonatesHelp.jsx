@@ -10,8 +10,6 @@ const DonatesHelp = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 6;
 
-
-    // Handle loading state
     if (isLoading) {
         return (
             <div className="flex items-center justify-center h-64">
@@ -20,7 +18,6 @@ const DonatesHelp = () => {
         );
     }
 
-    // Handle error state
     if (error) {
         return (
             <div className="flex items-center justify-center h-64">

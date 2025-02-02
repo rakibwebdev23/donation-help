@@ -17,6 +17,7 @@ import SignIn from './components/Authentication/SignIn.jsx';
 import SignUp from './components/Authentication/SignUp.jsx';
 import PrivateRoutes from './components/Authentication/PrivateRoutes/PrivateRoutes.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx';
+import UserHome from './components/Dashboard/UserHome/UserHome.jsx';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -49,10 +50,16 @@ const router = createBrowserRouter([
         path: "/projects/:id",
         element: <ShowInformation></ShowInformation>,
         loader: ({ params }) => fetch(`http://localhost:5000/projects/${params.id}`)
-      },
+      }
+    ]
+  },
+  {
+    path: "dashboard",
+    element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
+    children: [
       {
-        path: "/dashboard",
-        element: <Dashboard></Dashboard>
+        path: "userHome",
+        element: <UserHome></UserHome>
       }
     ]
   }
