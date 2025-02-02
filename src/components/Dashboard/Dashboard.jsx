@@ -1,19 +1,95 @@
+import { useState } from 'react';
 import { Link, Outlet } from "react-router-dom";
-import Container from "../Container/Container";
 
 const Dashboard = () => {
-    return (
-        <Container>
-            <div className="lg:flex items-center">
-                <div className="w-1/4 bg-rose-300">
-                    <Link to="/dashboard/userHome">User Home</Link>
-                </div>
-                <div>
-                    <Outlet></Outlet>
-                </div>
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { path: '/dashboard/home', label: 'Overview' },
+    { path: '/dashboard/profile', label: 'Profile' },
+    { path: '/dashboard/notifications', label: 'Notifications' },
+    { path: '/dashboard/settings', label: 'Settings' }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Top Navigation Bar */}
+      <nav className="bg-white border-b border-gray-200">
+        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16">
+            <div className="flex items-center">
+              {/* Mobile menu button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+                  />
+                </svg>
+              </button>
+              <span className="text-2xl font-bold text-purple-600 ml-2 lg:ml-0">My Profile</span>
             </div>
-        </Container>
-    );
+            
+            {/* User Profile Section */}
+            <div className="flex items-center">
+              <div className="flex items-center gap-2">
+                <div className="h-8 w-8 rounded-full bg-purple-200 flex items-center justify-center">
+                  <span className="text-purple-700 font-medium">U</span>
+                </div>
+                <span className="hidden lg:block text-sm font-medium text-gray-700">User Name</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div className="flex">
+        {/* Sidebar Navigation */}
+        <aside className={`
+          ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+          lg:translate-x-0 lg:w-64
+          fixed lg:static inset-y-0 left-0 z-50
+          transform transition-transform duration-300 ease-in-out
+          bg-white border-r border-gray-200
+        `}>
+          <div className="h-full px-3 py-4">
+            <div className="space-y-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-purple-200 hover:text-purple-600 transition-colors duration-200 font-bold text-rose-600"
+                >
+                  <span className="font-medium">{item.label}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </aside>
+
+        {/* Main Content Area */}
+        <main className="flex-1 p-4 lg:p-8">
+          <div className="max-w-7xl mx-auto">
+            {/* Breadcrumb */}
+            <div className="mb-6">
+              <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
+              <p className="text-sm text-gray-500">Welcome back to your dashboard</p>
+            </div>
+            
+            {/* Content */}
+            <div className="bg-white rounded-lg shadow-sm p-6">
+              <Outlet />
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
 };
 
 export default Dashboard;
