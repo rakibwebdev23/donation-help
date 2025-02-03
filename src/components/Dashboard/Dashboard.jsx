@@ -50,7 +50,6 @@ const Dashboard = () => {
                     </div>
                   }
                   <span className="hidden lg:block text-sm font-medium text-gray-800">{user?.displayName}</span>
-                  <span className="hidden lg:block text-sm font-medium text-gray-800">{user?.email}</span>
                 </div>
               </div>
             </div>
