@@ -10,8 +10,9 @@ const Footer = () => {
 
   const companyLinks = [
     { label: "About Us", path: "/about" },
+    { label: "Need Help", path: "/needhelp" },
     { label: "Contact", path: "/contact" },
-    { label: "Careers", path: "/careers" }
+    { label: "Careers", path: "/statistics" }
   ];
 
   return (
@@ -29,13 +30,15 @@ const Footer = () => {
           <div>
             <h4 className="font-medium mb-2">Services</h4>
             <ul className="space-y-2 text-sm">
-              {serviceLinks.map((link, index) => (
+              {
+                serviceLinks.map((link, index) => (
                 <li key={index}>
                   <Link to={link.path} className="hover:text-rose-500 transition-colors">
                     {link.label}
                   </Link>
                 </li>
-              ))}
+                ))
+              }
             </ul>
           </div>
           <div>
