@@ -27,16 +27,24 @@ const UserHome = () => {
                 <tbody>
                     {
                         donations.map((donation, index) => <tr key={donation._id}>
-                            <th>
-                                {index + 1}
-                            </th>
+
                             <td>
-                                <h2>{ donation.name}</h2>
+                                {index + 1}
                             </td>
                             <td>
-                                Zemlak, Daniel and Leannon
-                                <br />
-                                <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                            <div className="avatar">
+                                <div className="mask mask-squircle h-12 w-12">
+                                    <img
+                                        src={donation.photoURL}
+                                        alt="Avatar Tailwind CSS Component" />
+                                </div>
+                            </div>
+                            </td>
+                            <td>
+                                <h2>{donation.name}</h2>
+                            </td>
+                            <td>
+
                             </td>
                             <td>Purple</td>
                             <th>

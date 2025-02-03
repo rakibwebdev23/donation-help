@@ -18,7 +18,7 @@ const Header = () => {
   ];
   
   if (user?.email) {
-    menuItems.push({ path: "/dashboard", label: "Dashboard" });
+    menuItems.push({ path: "/dashboard/userHome", label: "Dashboard" });
   }
   
 
