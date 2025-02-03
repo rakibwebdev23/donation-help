@@ -7,6 +7,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { user, logOut } = useAuth();
+  console.log(user);
+  
 
   // Navigation menu items
   const menuItems = [

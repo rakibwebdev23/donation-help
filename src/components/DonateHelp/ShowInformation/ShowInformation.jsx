@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import moment from "moment";
 import Container from "../../Container/Container";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
@@ -41,6 +42,10 @@ const ShowInformation = () => {
         email: data.email,
         address: data.address,
         mobileNumber: data.mobile,
+        img,
+        category_name,
+        category_title,
+        date: moment().format('Do MMMM YYYY, h:mm:ss a'),
         donate_amount: Number(parseFloat(data.donationAmount).toFixed(2))
       };
       axiosSecure.post("/donation", donateInfo)
