@@ -122,13 +122,6 @@ const Header = () => {
                       >
                         Sign Out
                       </button>
-                      {user.photoURL && (
-                        <img
-                          src={user.photoURL}
-                          alt="Profile"
-                          className="w-16 h-16 rounded-full border-2 border-white"
-                        />
-                      )}
                     </>
                   ) : (
                     <NavItem path="/signin" label="Sign In" isMobile={true} />

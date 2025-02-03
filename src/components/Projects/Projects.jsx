@@ -6,6 +6,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import Container from "../Container/Container";
+import useAuth from "../hooks/useAuth";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -17,67 +18,81 @@ const Projects = () => {
     const axiosPublic = useAxiosPublic();
     const location = useLocation();
     const navigate = useNavigate();
+    const { user } = useAuth();
 
     const toggleSlider = () => {
         setIsSliderOpen(!isSliderOpen);
     };
 
     const onSubmit = async (data) => {
+        if (!user || !user?.email) {
+            // Redirect user to sign-in if not signed in
+            Swal.fire({
+                title: "You are not Signed In",
+                text: "Please Sign In to submit your project",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sign In"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate("/signin", { state: { from: location } });
+                }
+            });
+            return; // Stop execution if user is not signed in
+        }
+    
+        // Proceed with project submission
         const imageFile = { image: data.image[0] };
-        const res = await axiosPublic.post(image_hosting_api, imageFile, {
-            headers: { "Content-Type": "multipart/form-data" }
-        });
-
-        if (res.data.success) {
-            const projectDetails = {
-                category_name: data.categoryName,
-                category_title: data.categoryTitle,
-                description: data.description,
-                donate_amount: `${parseFloat(data.amount).toFixed(2)}`,
-                img: res.data.data.display_url
-            }
-            console.log(projectDetails);
-            const projectRes = await axiosSecure.post("/projects", projectDetails);
-            console.log(projectRes.data);
-            if (projectRes.data.insertedId) {
-                reset();
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "<h2 style='color:#4CAF50;'>🎉 Great Job!</h2>",
-                    html: `
-                        <p style="font-size:16px;color:#555;">
+        try {
+            const res = await axiosPublic.post(image_hosting_api, imageFile, {
+                headers: { "Content-Type": "multipart/form-data" }
+            });
+    
+            if (res.data.success) {
+                const projectDetails = {
+                    category_name: data.categoryName,
+                    category_title: data.categoryTitle,
+                    description: data.description,
+                    donate_amount: `${parseFloat(data.amount).toFixed(2)}`,
+                    img: res.data.data.display_url
+                };
+    
+                const projectRes = await axiosSecure.post("/projects", projectDetails);
+                if (projectRes.data.insertedId) {
+                    reset();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "<h2 style='color:#4CAF50;'>🎉 Great Job!</h2>",
+                        html: `<p style="font-size:16px;color:#555;">
                             You have successfully created this project to help others! 🥳
-                        </p>
-                    `,
-                    showConfirmButton: false,
-                    timer: 2000, // Adjusted time
-                    background: "#f9f9f9",
-                    backdrop: `
-                        rgba(0, 0, 0, 0.4)
-                        left top
-                        no-repeat
-                    `,
-                    customClass: {
-                        popup: "swal-custom-popup",
-                    },
-                    didOpen: () => {
-                        const swalContainer = Swal.getPopup();
-                        if (swalContainer) {
-                            swalContainer.style.border = "2px solid #4CAF50";
-                            swalContainer.style.borderRadius = "10px";
+                        </p>`,
+                        showConfirmButton: false,
+                        timer: 2000,
+                        background: "#f9f9f9",
+                        backdrop: `rgba(0, 0, 0, 0.4) left top no-repeat`,
+                        customClass: {
+                            popup: "swal-custom-popup",
+                        },
+                        didOpen: () => {
+                            const swalContainer = Swal.getPopup();
+                            if (swalContainer) {
+                                swalContainer.style.border = "2px solid #4CAF50";
+                                swalContainer.style.borderRadius = "10px";
+                            }
                         }
-                    }
-                })
-                    .then((result) => {
-                    console.log(result);
-                    if (result.isConfirmed) {
-                        navigate("/signin", { state: { from: location } })
-                    }
-                });
+                    });
+                    navigate("/");
+                }
             }
+        } catch (error) {
+            console.error("Error submitting project:", error);
+            Swal.fire("Error!", "Something went wrong. Please try again later.", "error");
         }
     };
+    
 
     return (
         <Container>
@@ -101,7 +116,7 @@ const Projects = () => {
                         </p>
                         <button
                             onClick={toggleSlider}
-                            className="px-8 py-3 bg-rose-600 text-white font-medium rounded-lg shadow-md hover:bg-rose-700 transition duration-300"
+                            className="px-8 py-3 bg-rose-600 text-white font-medium rounded shadow-md hover:bg-rose-700 transition duration-300"
                         >
                             Create Project
                         </button>
@@ -119,8 +134,6 @@ const Projects = () => {
                     >
                         ✖
                     </button>
-
-                    {/* Slider Content */}
                     <div className="px-8 py-6 space-y-4 bg-gray-200 h-screen">
                         <h3 className="lg:text-3xl font-semibold text-rose-600 text-center pb-3">
                             Submit Your Project
