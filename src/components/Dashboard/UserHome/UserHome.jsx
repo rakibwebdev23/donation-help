@@ -96,7 +96,7 @@ const UserHome = () => {
                                     key={donation._id}
                                     className="hover:bg-gray-50 transition-colors duration-200"
                                 >
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-purple-600">
                                         {index + 1}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
@@ -116,8 +116,8 @@ const UserHome = () => {
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         {donation.category_title}
                                     </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-semibold">
-                                       <span className="text-black">$</span> {donation.donate_amount}
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-purple-600 font-semibold">
+                                       <span className="text-rose-600">$</span> {donation.donate_amount}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         {donation.date} <br />{donation.time}
