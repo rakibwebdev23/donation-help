@@ -1,9 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { FaTrash, FaEdit } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 
 const UserHome = () => {
     const { user } = useAuth();
@@ -125,11 +124,6 @@ const UserHome = () => {
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                         <div className="flex justify-center space-x-3">
-                                            <Link to={`/dashboard/updateDonation/${donation._id}`}>
-                                                <button className="text-blue-500 hover:text-blue-700 transition-colors duration-200">
-                                                    <FaEdit size={16} />
-                                                </button>
-                                            </Link>
                                             <button onClick={() => handleDeleteDonation(donation._id)} className="text-red-500 hover:text-red-700 transition-colors duration-200">
                                                 <FaTrash size={16} />
                                             </button>

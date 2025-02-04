@@ -19,7 +19,6 @@ import PrivateRoutes from './components/Authentication/PrivateRoutes/PrivateRout
 import Dashboard from './components/Dashboard/Dashboard.jsx';
 import UserHome from './components/Dashboard/UserHome/UserHome.jsx';
 import Statistics from './components/Statistics/Statistics.jsx';
-import UpdateDonation from './components/Dashboard/UpdateDonation/UpdateDonation.jsx';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -66,11 +65,6 @@ const router = createBrowserRouter([
       {
         path: "userHome",
         element: <UserHome></UserHome>
-      },
-      {
-        path: "updateDonation/:id",
-        element: <UpdateDonation></UpdateDonation>,
-        loader: ({ params }) => fetch(`http://localhost:5000/donation/${params.id}`)
       }
     ]
   }

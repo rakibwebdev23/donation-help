@@ -39,7 +39,7 @@ const ShowInformation = () => {
     if (user && user?.email) {
       const donateInfo = {
         name: data.name,
-        email: data.email || user?.email,
+        email: data.email,
         address: data.address,
         mobileNumber: data.mobile,
         img,
@@ -71,7 +71,6 @@ const ShowInformation = () => {
             });
             navigate("/");
           }
-
         })
     }
     else {
