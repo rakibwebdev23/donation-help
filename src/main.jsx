@@ -19,6 +19,7 @@ import PrivateRoutes from './components/Authentication/PrivateRoutes/PrivateRout
 import Dashboard from './components/Dashboard/Dashboard.jsx';
 import UserHome from './components/Dashboard/UserHome/UserHome.jsx';
 import Statistics from './components/Statistics/Statistics.jsx';
+import Contact from './components/Contact/Contact.jsx';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/statistics",
         element: <Statistics></Statistics>
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>
       }
     ]
   },

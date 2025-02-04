@@ -13,6 +13,7 @@ const Header = () => {
     { path: "/", label: "Home" },
     { path: "/needhelp", label: "Need Help" },
     { path: "/about", label: "About" },
+    { path: "/contact", label: "Contact Us" },
   ];
   
   if (user?.email) {
