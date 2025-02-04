@@ -9,9 +9,8 @@ const Dashboard = () => {
 
   const navItems = [
     { path: '/dashboard/userHome', label: 'User Home' },
-    { path: '/dashboard/profile', label: 'Profile' },
-    { path: '/dashboard/notifications', label: 'Notifications' },
-    { path: '/dashboard/settings', label: 'Settings' }
+    { path: '/', label: 'Home' },
+    { path: '/needhelp', label: 'Need Any Help' },
   ];
 
   return (

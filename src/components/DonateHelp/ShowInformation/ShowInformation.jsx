@@ -39,13 +39,14 @@ const ShowInformation = () => {
     if (user && user?.email) {
       const donateInfo = {
         name: data.name,
-        email: data.email,
+        email: data.email || user?.email,
         address: data.address,
         mobileNumber: data.mobile,
         img,
         category_name,
         category_title,
-        date: moment().format('Do MMMM YYYY, h:mm:ss a'),
+        date: moment().format('Do MMMM YYYY'),
+        time: moment().format('h:mm:ss a'),
         donate_amount: Number(parseFloat(data.donationAmount).toFixed(2))
       };
       axiosSecure.post("/donation", donateInfo)

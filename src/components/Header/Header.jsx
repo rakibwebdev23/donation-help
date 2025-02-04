@@ -6,9 +6,7 @@ import Container from "../Container/Container";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const { user, logOut } = useAuth();
-  console.log(user);
-  
+  const { user, logOut } = useAuth();  
 
   // Navigation menu items
   const menuItems = [

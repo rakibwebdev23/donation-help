@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const UserHome = () => {
     const { user } = useAuth();
@@ -52,7 +53,7 @@ const UserHome = () => {
             }
         });
     };
-    
+
 
     return (
         <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -81,6 +82,9 @@ const UserHome = () => {
                                 </th>
                                 <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Donation
+                                </th>
+                                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Date & Time
                                 </th>
                                 <th className="px-6 py-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Actions
@@ -114,13 +118,18 @@ const UserHome = () => {
                                         {donation.category_title}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-semibold">
-                                        ${donation.donate_amount}
+                                       <span className="text-black">$</span> {donation.donate_amount}
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {donation.date} <br />{donation.time}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                         <div className="flex justify-center space-x-3">
-                                            <button className="text-blue-500 hover:text-blue-700 transition-colors duration-200">
-                                                <FaEdit size={16} />
-                                            </button>
+                                            <Link to={`/dashboard/updateDonation/${donation._id}`}>
+                                                <button className="text-blue-500 hover:text-blue-700 transition-colors duration-200">
+                                                    <FaEdit size={16} />
+                                                </button>
+                                            </Link>
                                             <button onClick={() => handleDeleteDonation(donation._id)} className="text-red-500 hover:text-red-700 transition-colors duration-200">
                                                 <FaTrash size={16} />
                                             </button>
