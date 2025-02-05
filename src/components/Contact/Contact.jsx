@@ -1,51 +1,136 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from "../../assets/images/helpHand/about.jpg"
+import { useForm } from 'react-hook-form';
+import useAuth from '../hooks/useAuth';
+import moment from 'moment';
+import useAxiosSecure from '../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const Contact = () => {
+    const { user } = useAuth();
+    const navigate = useNavigate();
+    const axiosSecure = useAxiosSecure();
+    const location = useLocation();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset
+    } = useForm();
+
+    const onSubmit = async (data) => {
+        if (user && user?.email) {
+            const contactInfo = {
+                name: data.name,
+                email: data.email,
+                mobileNumber: data.mobile,
+                date: data.date,
+                time: moment().format('h:mm:ss a'),
+                message: data.message
+            };
+            
+            axiosSecure.post("/contact", contactInfo)
+                .then(res => {
+                    if (res.data.insertedId) {
+                        reset();
+                        Swal.fire({
+                            title: '<span class="text-3xl font-bold text-gray-800">Thank You! 🎉</span>',
+                            html: '<p class="text-lg text-gray-600">Your message has been sent successfully.</p>',
+                            icon: 'success',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Continue',
+                            confirmButtonColor: '#059669',
+                            timer: 3000,
+                            timerProgressBar: true,
+                            customClass: {
+                                popup: 'rounded-xl shadow-2xl border border-gray-100',
+                                title: 'font-bold',
+                                htmlContainer: 'py-4',
+                                confirmButton: 'text-sm font-medium px-6 py-2.5 rounded-lg',
+                                timerProgressBar: 'bg-emerald-500'
+                            },
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInUp animate__faster'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutDown animate__faster'
+                            }
+                        });
+                        navigate("/");
+                    }
+                });
+        } else {
+            Swal.fire({
+                title: '<span class="text-3xl font-bold text-gray-800">Sign In Required</span>',
+                html: '<p class="text-lg text-gray-600">Please sign in to send your message</p>',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sign In',
+                cancelButtonText: 'Cancel',
+                confirmButtonColor: '#3b82f6',
+                cancelButtonColor: '#ef4444',
+                customClass: {
+                    popup: 'rounded-xl shadow-2xl border border-gray-100',
+                    title: 'font-bold',
+                    htmlContainer: 'py-4',
+                    confirmButton: 'text-sm font-medium px-6 py-2.5 rounded-lg',
+                    cancelButton: 'text-sm font-medium px-6 py-2.5 rounded-lg'
+                },
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown animate__faster'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp animate__faster'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate("/signin", { state: { from: location } });
+                }
+            });
+        }
+    };
+
     return (
         <div className="min-h-screen bg-gray-50">
-            {/* Hero Section */}
-            <div className="relative h-[500px]">
+            <div className="relative h-[400px] md:h-[500px] lg:h-[550px]">
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${img})` }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent" />
-                <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col justify-center h-full">
-                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-transparent" />
+                <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+                    <div className="w-full text-center md:text-left">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
                             Let's Make A <span className="text-rose-500">Difference</span>
                         </h1>
-                        <nav className="flex items-center space-x-6 text-lg text-white/90">
+                        <nav className="flex justify-center md:justify-start items-center space-x-4 sm:space-x-6 text-lg text-white/90">
                             <Link to="/" className="hover:text-rose-400 transition-all duration-300">Home</Link>
-                            <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                            <div className="w-1.5 h-1.5 rounded-full bg-rose-500 hidden sm:block" />
                             <Link to="/needhelp" className="hover:text-rose-400 transition-all duration-300">Need Help</Link>
                         </nav>
                     </div>
                 </div>
             </div>
 
-            {/* Main Content */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
                     <div className="grid lg:grid-cols-2">
-                        {/* Form Section */}
                         <div className="p-8 lg:p-12">
                             <div className="max-w-lg">
                                 <h2 className="text-3xl font-bold text-gray-900">Get in Touch</h2>
 
-                                <form className="mt-8 space-y-6">
-                                    {/* Name Input */}
+                                <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700">Full Name</label>
                                         <input
                                             type="text"
                                             className="mt-2 block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition-colors duration-200"
                                             placeholder="Your Name"
-                                        />
+                                            {...register("name", { required: "Name is required" })} />
+                                        {errors.name && (
+                                            <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+                                        )}
                                     </div>
-
-                                    {/* Email and Phone Grid */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700">Email Address</label>
@@ -53,7 +138,12 @@ const Contact = () => {
                                                 type="email"
                                                 className="mt-2 block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition-colors duration-200"
                                                 placeholder="your@email.com"
+                                                {...register("email", { required: "Email is required" })}
+
                                             />
+                                            {errors.email && (
+                                                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                                            )}
                                         </div>
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700">Phone Number</label>
@@ -61,7 +151,17 @@ const Contact = () => {
                                                 type="tel"
                                                 className="mt-2 block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition-colors duration-200"
                                                 placeholder="+880 "
+                                                {...register("mobile", {
+                                                    required: "Mobile number is required",
+                                                    pattern: {
+                                                        value: /^[0-9]{10,15}$/,
+                                                        message: "Enter a valid mobile number",
+                                                    },
+                                                })}
                                             />
+                                            {errors.mobile && (
+                                                <p className="text-red-500 text-sm mt-1">{errors.mobile.message}</p>
+                                            )}
                                         </div>
                                     </div>
                                     <div>
@@ -69,7 +169,11 @@ const Contact = () => {
                                         <input
                                             type="date"
                                             className="mt-2 block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition-colors duration-200"
+                                            {...register("date", { required: "Date is required" })}
                                         />
+                                        {errors.date && (
+                                            <p className="text-red-500 text-sm mt-1">{errors.date.message}</p>
+                                        )}
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700">Message</label>
@@ -77,7 +181,11 @@ const Contact = () => {
                                             rows="4"
                                             placeholder="Write your message here..."
                                             className="mt-2 block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 transition-colors duration-200 resize-y min-h-[120px]"
+                                            {...register("message", { required: "Message is required" })}
                                         />
+                                        {errors.message && (
+                                            <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+                                        )}
                                     </div>
 
                                     <button
@@ -90,7 +198,7 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        {/* Map and Contact Info Section */}
+                        {/* Map */}
                         <div className="bg-gray-50 p-8 lg:p-12">
                             <div className="h-[300px] md:h-[400px] bg-white rounded-lg shadow-inner mb-8">
                                 <iframe

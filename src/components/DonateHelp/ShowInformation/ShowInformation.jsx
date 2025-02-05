@@ -45,7 +45,7 @@ const ShowInformation = () => {
         img,
         category_name,
         category_title,
-        date: moment().format('Do MMMM YYYY'),
+        date: moment().format('MMMM Do YYYY'),
         time: moment().format('h:mm:ss a'),
         donate_amount: Number(parseFloat(data.donationAmount).toFixed(2))
       };
