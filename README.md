@@ -48,6 +48,7 @@ npm run dev
 [CFBD Server GitHub Repo](https://github.com/rakibwebdev23/donation-help-server)
 
 ## Connect with Me
-- **Portfolio:** [Rakib Hasan's Portfolio](#) *(Add your portfolio link here)*
-- **LinkedIn:** [Rakib Hasan](#) *(Add your LinkedIn link here)*
+- **Portfolio:** [Rakib Hasan's Portfolio](https://rakib-hasan-eb93b.web.app/)
+- **LinkedIn:** [Rakib Hasan](https://www.linkedin.com/in/md-rakib-hasan-0606b933a/)
+
 
