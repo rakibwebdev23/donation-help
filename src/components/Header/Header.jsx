@@ -34,8 +34,8 @@ const Header = () => {
       to={path}
       className={({ isActive }) =>
         `transition-colors duration-200 ${isActive
-          ? "text-white font-bold border-b-2 border-black"
-          : "text-black hover:text-white"
+          ? "text-[#BE123C] font-bold border-b-2 border-black"
+          : "text-black hover:text-[#BE123C]"
         }`
       }
       onClick={() => {
@@ -48,7 +48,7 @@ const Header = () => {
   );
 
   return (
-    <div className="bg-[#ed3050] sticky top-0 z-50">
+    <div className="bg-white sticky top-0 z-50">
       <Container>
         <header className="container mx-auto w-full">
           <div className="flex items-center justify-between py-7">
@@ -57,7 +57,7 @@ const Header = () => {
             </NavLink>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8 font-bold">
+            <nav className="hidden md:flex items-center space-x-8 font-medium">
 
               {menuItems.map((item) => (
                 <NavItem key={item.path} {...item} />

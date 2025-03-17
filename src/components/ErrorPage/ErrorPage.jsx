@@ -2,7 +2,6 @@ import { Link, useRouteError } from "react-router-dom";
 
 const ErrorPage = () => {
     const error = useRouteError();
-
     return (
         <div className="flex items-center mt-72">
             <div className="mx-auto">

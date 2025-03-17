@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       {
         path: "/projects/:id",
         element: <ShowInformation></ShowInformation>,
-        loader: ({ params }) => fetch(`https://donation-server-hazel.vercel.app/projects/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/projects/${params.id}`)
       },
       {
         path: "/statistics",
