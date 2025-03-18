@@ -20,6 +20,7 @@ import Dashboard from './components/Dashboard/Dashboard.jsx';
 import UserHome from './components/Dashboard/UserHome/UserHome.jsx';
 import Statistics from './components/Statistics/Statistics.jsx';
 import Contact from './components/Contact/Contact.jsx';
+import { HelmetProvider } from 'react-helmet-async';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/needhelp",
-        element:<Projects></Projects>
+        element: <Projects></Projects>
       },
       {
         path: "/signin",
@@ -77,12 +78,14 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProviders>
-      <QueryClientProvider client={queryClient}>
-        <div className='bg-gray-100'>
-          <RouterProvider router={router} />
-        </div>
-      </QueryClientProvider>
-    </AuthProviders>
+    <HelmetProvider>
+      <AuthProviders>
+        <QueryClientProvider client={queryClient}>
+          <div className='bg-gray-100'>
+            <RouterProvider router={router} />
+          </div>
+        </QueryClientProvider>
+      </AuthProviders>
+    </HelmetProvider>
   </React.StrictMode>,
 )

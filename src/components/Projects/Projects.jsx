@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import Container from "../Container/Container";
 import useAuth from "../hooks/useAuth";
+import HelmetShare from "../Shared/HelmetShare/HelmetShare";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -96,6 +97,7 @@ const Projects = () => {
 
     return (
         <Container>
+            <HelmetShare caption="Help"></HelmetShare>
             <div className="h-screen flex justify-center mx-auto lg:pt-0 pt-10">
                 <div className="flex flex-col md:flex-row items-center gap-10">
                     <div className="w-full md:w-1/2 flex-shrink-0">
