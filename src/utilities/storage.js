@@ -1,4 +1,3 @@
-
 const getCardData = () =>{
     const storedCard = localStorage.getItem('donation-card');
     if(storedCard){
