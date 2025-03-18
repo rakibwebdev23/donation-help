@@ -10,7 +10,7 @@ const Banner = () => {
                 <div className="w-full">
                     <h1 className="mb-5 lg:text-4xl font-medium text-center ">Helping People in Times of Disaster!</h1>
                     <div className="lg:mt-10">
-                        <button className="py-2 lg:px-8 px-4 text-base bg-[#F3C577] text-black rounded-full hover:text-white">Donate Us</button>
+                        <button className="py-2 lg:px-8 px-4 text-base bg-[#E11D48] text-white rounded-full hover:text-white">Donate Us</button>
                         <button className="py-2 lg:px-8 px-4 text-base bg-[#0E605A] text-white rounded-full lg:ml-10 ml-4 hover:text-black">Join Volunteers</button>
                     </div>
                 </div>
