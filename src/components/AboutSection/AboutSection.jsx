@@ -6,7 +6,6 @@ const AboutSection = () => {
         <div className="bg-amber-50 py-12">
             <Container>
                 <div className="text-center mb-12">
-                    <span className="inline-block px-4 py-1 bg-teal-100 text-teal-600 rounded-full text-sm font-medium mb-3">About Our Mission</span>
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Making a <span className="text-[#e11d48]">Difference</span> Together</h2>
                 </div>
                 <div className="flex flex-col lg:flex-row items-center gap-8">

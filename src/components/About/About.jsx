@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import img from "../../assets/images/helpHand/contactDFBD2.jpg"
 import img1 from "../../assets/images/helpHand/about2.jpg"
+import AboutSection from '../AboutSection/AboutSection';
 
 const About = () => {
     return (
         <div className="w-full">
-            <div
-                className="hero min-h-[60vh] md:min-h-[80vh] lg:min-h-[550px] bg-cover bg-center inset-0 flex items-center justify-center relative"
+            <div className="hero min-h-[60vh] md:min-h-[80vh] lg:min-h-[550px] bg-cover bg-center inset-0 flex items-center justify-center relative"
                 style={{ backgroundImage: `url(${img})` }}>
                 <div className="absolute inset-0 bg-black bg-opacity-50"></div>
                 <div className="relative text-white text-center px-6 sm:px-12">
@@ -18,7 +18,6 @@ const About = () => {
                     </nav>
                 </div>
             </div>
-
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="py-10">
                     <div className="text-center">
@@ -38,20 +37,21 @@ const About = () => {
                             <p className="text-sm sm:text-base">Helping those who truly need it.</p>
                         </div>
                     </div>
+                    <AboutSection></AboutSection>
                     <div className="bg-black mt-16 rounded text-white flex flex-col lg:flex-row items-center p-6 md:p-10 gap-6 lg:gap-10">
-                        <img 
-                            className="rounded w-28 sm:w-48 md:w-64 object-cover" 
-                            src={img1} 
-                            alt="CFBD About" 
+                        <img
+                            className="rounded w-28 sm:w-48 md:w-64 object-cover"
+                            src={img1}
+                            alt="CFBD About"
                         />
                         <div className="text-left">
                             <h2 className="text-xl sm:text-2xl lg:text-4xl text-rose-600 font-bold mb-4">
                                 About Crowd Funding for Poor People (CFBD)
                             </h2>
                             <p className="text-sm sm:text-base text-justify">
-                                At Crowd Funding for Poor People (CFBD), we believe in the power of community and generosity. 
-                                Our platform is designed to connect individuals in need with compassionate donors who want to 
-                                make a difference. Whether it's for medical emergencies, education, housing, or essential daily 
+                                At Crowd Funding for Poor People (CFBD), we believe in the power of community and generosity.
+                                Our platform is designed to connect individuals in need with compassionate donors who want to
+                                make a difference. Whether it's for medical emergencies, education, housing, or essential daily
                                 needs, CFBD provides a transparent and secure way for people to seek and receive financial support.
                             </p>
                             <Link to="/">
