@@ -21,7 +21,6 @@ Crowd Funding of Bangladesh (CFBD) is a public welfare platform that allows indi
 - **React Router** – For seamless navigation.
 - **Axios** – For API requests and data fetching.
 - **TanStack React Query** – For state and server data management.
-- **Chart.js & Recharts** – For visualizing donation statistics.
 - **React Hook Form** – For form validation and handling.
 - **SweetAlert2** – For better alerts and user interactions.
 - **React Paginate** – For pagination in project listings.
